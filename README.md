@@ -1,6 +1,6 @@
 # Socialized
 
-_Socialized_ is an example application, which has been develop to demonstrate two distinct features of [MEANS.js](https://github.com/ldaniels528/MEANS.js):
+_Socialized_ is an example of a full-featured application, which has been developed to demonstrate two (of three) distinct use cases for [MEANS.js](https://github.com/ldaniels528/MEANS.js):
 * Using MEANS.js to build a Play application (Scala.js + AngularJS front-end, Play and Scala RESTful backend).
 * Using MEANS.js to build a MEAN application (Scala.js + AngularJS front-end, Node and Scala.js RESTful backend). 
 
