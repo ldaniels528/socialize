@@ -1,8 +1,9 @@
 package com.socialized.dao.mongodb
 
-import com.github.ldaniels528.commons.helpers.OptionHelper.Risky._
+import com.socialized.util.OptionHelper._
 import com.socialized.dao.EventDAO
 import com.socialized.models.{EntitySearchResult, Event}
+
 import play.modules.reactivemongo.ReactiveMongoApi
 import reactivemongo.bson.BSONObjectID
 

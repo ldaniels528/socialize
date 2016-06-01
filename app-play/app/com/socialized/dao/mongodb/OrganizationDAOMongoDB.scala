@@ -1,6 +1,6 @@
 package com.socialized.dao.mongodb
 
-import com.github.ldaniels528.commons.helpers.OptionHelper.Risky._
+import com.socialized.util.OptionHelper._
 import com.socialized.dao.OrganizationDAO
 import com.socialized.models.{EntitySearchResult, Group}
 import play.modules.reactivemongo.ReactiveMongoApi

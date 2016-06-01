@@ -13,7 +13,14 @@ been a great test bed for me in terms of ensuring that most of the features offe
 
 ## Building the code
 
-### Building the MEANS.js + Play application distibutable (AngularJS frontend, Play backend)
+<a name="Build_Requirements"></a>
+### Build Requirements
+
+* [Scala 2.11.8+] (http://scala-lang.org/download/)
+* [Scala.js 0.6.8] (http://www.scala-js.org/)
+* [SBT 0.13.11+] (http://www.scala-sbt.org/download.html)
+
+### Building the MEANS.js + Play application distributable (AngularJS frontend, Play backend)
 
 To build the MEANS.js + Play application (distibutable .ZIP) do the following:
 

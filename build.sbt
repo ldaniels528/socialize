@@ -127,10 +127,6 @@ lazy val playapp = (project in file("app-play"))
     ivyScala := ivyScala.value map (_.copy(overrideScalaVersion = true)),
     libraryDependencies ++= Seq(filters, json, ws,
       //
-      // socialized/ldaniels528 dependencies
-      //
-      "com.github.ldaniels528" %% "commons-helpers" % "0.1.2",
-      //
       // TypeSafe dependencies
       //
       "com.typesafe.akka" %% "akka-testkit" % akkaVersion % "test",
