@@ -1,0 +1,109 @@
+########################################################################################################################
+#       Application Views and API Routes
+########################################################################################################################
+
+GET           /                                                      com.socialized.controllers.Application.index
+
+GET           /assets/*file                                          controllers.Assets.versioned(path="/public", file: Asset)
+GET           /webjars/*file                                         controllers.WebJarAssets.at(file)
+GET           /websocket                                             com.socialized.controllers.Application.webSocket
+
+########################################################################################################################
+#       Events API Routes
+########################################################################################################################
+
+GET           /api/events/upcoming/:uid                              @com.socialized.controllers.EventController.getEventsByUserID(uid: String)
+GET           /api/events/user/:uid                                  @com.socialized.controllers.EventController.getEventsByUserID(uid: String)
+POST          /api/events/user/:uid                                  @com.socialized.controllers.EventController.createEvent(uid: String)
+
+########################################################################################################################
+#       Groups API Routes
+########################################################################################################################
+
+GET           /api/group/:id                                         @com.socialized.controllers.GroupsController.getGroupByID(id: String)
+GET           /api/group                                             @com.socialized.controllers.GroupsController.getGroupByName(name: String)
+GET           /api/groups                                            @com.socialized.controllers.GroupsController.getGroups(maxResults: Int = 20)
+
+########################################################################################################################
+#       Notifications API Routes
+########################################################################################################################
+
+GET           /api/notifications                                     @com.socialized.controllers.NotificationController.getNotifications(maxResults: Int ?= 10)
+DELETE        /api/notifications/:id                                 @com.socialized.controllers.NotificationController.deleteNotification(id)
+GET           /api/notifications/user/:uid/:unread                   @com.socialized.controllers.NotificationController.getNotificationsByUserID(uid: String, unread: Boolean)
+POST          /api/notifications/user/:uid                           @com.socialized.controllers.NotificationController.createNotification(uid: String)
+
+########################################################################################################################
+#       Posts API Routes
+########################################################################################################################
+
+POST          /api/post                                              @com.socialized.controllers.PostController.createPost
+PUT           /api/post                                              @com.socialized.controllers.PostController.updatePost
+GET           /api/post/:id                                          @com.socialized.controllers.PostController.getPostByID(id)
+DELETE        /api/post/:id                                          @com.socialized.controllers.PostController.deletePostByID(id)
+
+POST          /api/post/:id/attachment/:uid                          @com.socialized.controllers.PostController.uploadAttachment(id, uid)
+GET           /api/post/:id/attachments                              @com.socialized.controllers.PostController.getAttachmentsByPostID(id)
+
+POST          /api/post/:id/comment                                  @com.socialized.controllers.PostController.createComment(id:String)
+PUT           /api/post/:id/comment/:cid/like/:uid                   @com.socialized.controllers.PostController.likeComment(id:String, cid:String, uid:String)
+DELETE        /api/post/:id/comment/:cid/like/:uid                   @com.socialized.controllers.PostController.unlikeComment(id:String, cid:String, uid:String)
+POST          /api/post/:id/comment/:cid/reply                       @com.socialized.controllers.PostController.createReply(id:String, cid:String)
+PUT           /api/post/:id/comment/:cid/reply/:rid/like/:uid        @com.socialized.controllers.PostController.likeReply(id:String, cid:String, rid:String, uid:String)
+DELETE        /api/post/:id/comment/:cid/reply/:rid/like/:uid        @com.socialized.controllers.PostController.unlikeReply(id:String, cid:String, rid:String, uid:String)
+
+PUT           /api/post/:id/like/:uid                                @com.socialized.controllers.PostController.likePost(id:String, uid: String)
+DELETE        /api/post/:id/like/:uid                                @com.socialized.controllers.PostController.unlikePost(id:String, uid: String)
+
+GET           /api/posts                                             @com.socialized.controllers.PostController.getPosts
+GET           /api/posts/attachments/:id                             @com.socialized.controllers.PostController.downloadAttachment(id)
+GET           /api/posts/attachments/user/:uid                       @com.socialized.controllers.PostController.getAttachmentsByUserID(uid)
+GET           /api/posts/tags                                        @com.socialized.controllers.PostController.getPostsByTags(tags: List[String])
+GET           /api/posts/user/:uid                                   @com.socialized.controllers.PostController.getPostsByUserID(uid: String)
+GET           /api/posts/user/:uid/newsfeed                          @com.socialized.controllers.PostController.getNewsFeed(uid: String)
+
+GET           /api/social/content                                    @com.socialized.controllers.PostController.getSharedContent(url)
+
+########################################################################################################################
+#       Search API Routes
+########################################################################################################################
+
+GET           /api/search                                            @com.socialized.controllers.SearchController.search(searchTerm: String, maxResults: Int ?= 20)
+
+########################################################################################################################
+#       Sessions API Routes
+########################################################################################################################
+
+GET           /api/session/:id                                       @com.socialized.controllers.SessionController.getSession(id: String)
+GET           /api/sessions                                          @com.socialized.controllers.SessionController.getSessionsByUsers(userIDs: List[String])
+
+########################################################################################################################
+#       Signup/Sign-in API Routes
+########################################################################################################################
+
+PUT           /api/credentials                                       @com.socialized.controllers.AuthenticationController.updateCredentials
+
+POST          /api/signin                                            @com.socialized.controllers.AuthenticationController.authenticate
+POST          /api/signup                                            @com.socialized.controllers.SignUpController.signUp
+
+########################################################################################################################
+#       Users API Routes
+########################################################################################################################
+
+POST          /api/user                                              @com.socialized.controllers.UserController.createUser
+PUT           /api/user                                              @com.socialized.controllers.UserController.updateUser
+GET           /api/user/:id                                          @com.socialized.controllers.UserController.getUserByID(id: String)
+GET           /api/users/name                                        @com.socialized.controllers.UserController.getUserByName(username: String)
+GET           /api/users/email                                       @com.socialized.controllers.UserController.getUserByEmail(primaryEmail: String)
+
+GET           /api/user/:id/avatar                                   @com.socialized.controllers.UserController.getAvatarByID(id: String)
+
+GET           /api/user/:id/followers                                @com.socialized.controllers.UserController.getFollowers(id: String)
+PUT           /api/user/:id/follow/:followerID                       @com.socialized.controllers.UserController.follow(id: String, followerID: String)
+DELETE        /api/user/:id/follow/:followerID                       @com.socialized.controllers.UserController.unfollow(id: String, followerID: String)
+
+GET           /api/user/:id/endorsers                                @com.socialized.controllers.UserController.getEndorsers(id: String)
+PUT           /api/user/:id/like/:endorserID                         @com.socialized.controllers.UserController.like(id: String, endorserID: String)
+DELETE        /api/user/:id/like/:endorserID                         @com.socialized.controllers.UserController.unlike(id: String, endorserID: String)
+
+GET           /api/user/:ownerID/submitter                           @com.socialized.controllers.UserController.getSubmitter(ownerID: String)

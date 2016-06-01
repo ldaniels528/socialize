@@ -1,0 +1,61 @@
+<div ng-controller="ProfileController">
+    <div class="row home_info home_style">
+        <div style="display: inline; float: left; margin-right: 10px">
+            <img class="avatar64" ng-if="profileUser.avatarURL" ng-src="{{ profileUser.avatarURL }}">
+        </div>
+        <div style="display: inline">
+            <div>
+                <span ng-show="profileUser.firstName || profileUser.lastName" class="name_line">{{ showFullName(profileUser) }}</span>
+                <span ng-hide="profileUser.firstName || profileUser.lastName" class="name_line">{{ profileUser.screenName }}</span>
+                <span class="home_level pull-right">{{ profileUser.likes || 0 }}</span>
+            </div>
+
+            <div ng-show="profileUser.title">
+                {{ profileUser.title }} <span ng-if="profileUser.company">at {{ profileUser.company }}</span>
+            </div>
+            <div ng-hide="profileUser.title">
+                <span class="sk_null">No position information provided</span>
+            </div>
+
+            <div>
+                <a class="hash_tag" ng-click="alert('Not yet implemented');">{{ profileUser.gender === 'F' ? "Her" : "His" }} recent activity</a>
+                <span class="pull-right">{{ profileUser.totalFollowers || 0 | number }} followers</span>
+            </div>
+
+            <div style="margin-top: 10px">
+                <span ng-click="endorse(profileUser)" class="btn btn-success" style="margin-right: 20px">
+                    <i class="fa fa-thumbs-o-up"></i>
+                    <span ng-show="isEndorsed(profileUser)">Liked</span>
+                    <span ng-hide="isEndorsed(profileUser)">Like</span>
+                    <img ng-show="endorseLoading" src="/assets/images/status/loading16.gif">
+                </span>
+                <span ng-click="follow(profileUser)" class="btn btn-success" style="margin-right: 20px">
+                    <i class="fa fa-twitter-square"></i>
+                    <span ng-show="isFollowed(profileUser)">Followed</span>
+                    <span ng-hide="isFollowed(profileUser)">Follow</span>
+                    <img ng-show="followLoading" src="/assets/images/status/loading16.gif">
+                </span>
+                <span ng-click="contact(profileUser)" class="btn btn-primary" style="margin-right: 20px">
+                    <i class="fa fa-send-o"></i>
+                    <span ng-show="isContacted(profileUser)">Contacted</span>
+                    <span ng-hide="isContacted(profileUser)">Contact</span>
+                     <img ng-show="contactLoading" src="/assets/images/status/loading16.gif">
+                </span>
+                <span ng-click="report(profileUser)" class="btn btn-warning" style="margin-right: 20px">
+                    <i class="fa fa-user-secret"></i>
+                    <span ng-show="isReported(profileUser)">Reported</span>
+                    <span ng-hide="isReported(profileUser)">Report</span>
+                     <img ng-show="reportLoading" src="/assets/images/status/loading16.gif">
+                </span>
+                <span ng-click="block(profileUser)" class="btn btn-danger">
+                    <i class="fa fa-microphone-slash"></i>
+                    <span ng-show="isBlocked(profileUser)">Blocked</span>
+                    <span ng-hide="isBlocked(profileUser)">Block</span>
+                     <img ng-show="blockLoading" src="/assets/images/status/loading16.gif">
+                </span>
+            </div>
+        </div>
+        <br style="clear: both" />
+    </div>
+    <div class="row" ng-include src="'/assets/views/home/posts/postings.html'"></div>
+</div>

@@ -1,0 +1,3 @@
+<div ng-repeat="notification in getNotifications() | orderBy:'-creationTime'">
+    <div ng-include src="'/assets/views/home/notification.html'"></div>
+</div>

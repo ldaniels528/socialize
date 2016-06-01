@@ -1,0 +1,61 @@
+<div ng-controller="OrganizationController">
+    <div class="row home_info home_style">
+        <div style="display: inline; float: left; margin-right: 10px">
+            <img class="avatar64" ng-if="organization.avatarURL" ng-src="{{ organization.avatarURL }}">
+        </div>
+        <div style="display: inline">
+            <div>
+                <span ng-show="organization.firstName || organization.lastName" class="name_line">{{ showFullName(organization) }}</span>
+                <span ng-hide="organization.firstName || organization.lastName" class="name_line">{{ organization.screenName }}</span>
+                <span class="home_level pull-right">{{ organization.likes || 0 }}</span>
+            </div>
+
+            <div ng-show="organization.title">
+                {{ organization.title }} <span ng-if="organization.company">at {{ organization.company }}</span>
+            </div>
+            <div ng-hide="organization.title">
+                <span class="sk_null">No position information provided</span>
+            </div>
+
+            <div>
+                <a class="hash_tag" ng-click="alert('Not yet implemented');">{{ organization.gender === 'F' ? "Her" : "His" }} recent activity</a>
+                <span class="pull-right">{{ organization.totalFollowers || 0 | number }} followers</span>
+            </div>
+
+            <div style="margin-top: 10px">
+                <span ng-click="endorse(organization)" class="btn btn-success" style="margin-right: 20px">
+                    <i class="fa fa-thumbs-o-up"></i>
+                    <span ng-show="isEndorsed(organization)">Liked</span>
+                    <span ng-hide="isEndorsed(organization)">Like</span>
+                    <img ng-show="endorseLoading" src="/assets/images/status/loading16.gif">
+                </span>
+                <span ng-click="follow(organization)" class="btn btn-success" style="margin-right: 20px">
+                    <i class="fa fa-twitter-square"></i>
+                    <span ng-show="isFollowed(organization)">Followed</span>
+                    <span ng-hide="isFollowed(organization)">Follow</span>
+                    <img ng-show="followLoading" src="/assets/images/status/loading16.gif">
+                </span>
+                <span ng-click="contact(organization)" class="btn btn-primary" style="margin-right: 20px">
+                    <i class="fa fa-send-o"></i>
+                    <span ng-show="isContacted(organization)">Contacted</span>
+                    <span ng-hide="isContacted(organization)">Contact</span>
+                     <img ng-show="contactLoading" src="/assets/images/status/loading16.gif">
+                </span>
+                <span ng-click="report(organization)" class="btn btn-warning" style="margin-right: 20px">
+                    <i class="fa fa-user-secret"></i>
+                    <span ng-show="isReported(organization)">Reported</span>
+                    <span ng-hide="isReported(organization)">Report</span>
+                     <img ng-show="reportLoading" src="/assets/images/status/loading16.gif">
+                </span>
+                <span ng-click="block(organization)" class="btn btn-danger">
+                    <i class="fa fa-microphone-slash"></i>
+                    <span ng-show="isBlocked(organization)">Blocked</span>
+                    <span ng-hide="isBlocked(organization)">Block</span>
+                     <img ng-show="blockLoading" src="/assets/images/status/loading16.gif">
+                </span>
+            </div>
+        </div>
+        <br style="clear: both" />
+    </div>
+    <div class="row" ng-include src="'/assets/views/home/posts/postings.html'"></div>
+</div>

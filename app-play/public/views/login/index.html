@@ -1,0 +1,109 @@
+<div>
+    <div ng-controller="AuthenticationController" >
+        <div class="col-md-12 sk_title_bar">
+            <div class="col-md-4">
+                <span class="sk_title_text">socialized</span>
+            </div>
+            <div class="col-md-8" style="padding: 5px">
+                <span class="pull-right">
+                    <input type="text" ng-model="form.screenName" placeholder="Screen name">
+                    <input type="password" ng-model="form.password" placeholder="Password">
+                    <span ng-click="login(form)" class="btn btn-primary btn-sm">
+                        <img ng-show="loginLoading" src="/assets/images/status/loading16.gif">
+                        <i ng-hide="loginLoading" class="fa fa-sign-in"></i>
+                        Log In
+                    </span>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-offset-8 col-md-4">
+            <ul ng-repeat="message in messages">
+                <li class="sk_error">{{ message }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-6" style="border-right: 1px solid #cccccc">
+        <h2>Welcome to socialized</h2>
+
+        <div>
+            <p>We live in fast paced world where it's hard to keep up with new technology.
+                Whether you want to brush up on a specific skill set for your next job interview,
+                or perhaps you just want to gauge your own knowledge.</p>
+
+            Either way these were some of the reasons to why we created Socialized. Our goals are:
+            <ul>
+                <li>To provide a comprehensive tool for career development.</li>
+                <li>To help you improve your skills.</li>
+                <li>To provide a simple way to get a better sense of where you are compared to others.</li>
+            </ul>
+        </div>
+
+        <h2>How socialized could help you</h2>
+
+        <div>
+            <ul>
+                <li>Are you looking for a new opportunity?</li>
+                <li>Need interview preparation?</li>
+                <li>Looking to improve your skills?</li>
+                <li>Need assistance with a technical issue?</li>
+            </ul>
+        </div>
+
+        <h2>Developers are welcomed</h2>
+
+        <div>
+            <ul>
+                <li>Provide technical assistance to others.</li>
+                <li>Showcase your talents. Host your projects.</li>
+                <li>Use Socialized's API to build powerful position analytics tools.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div  ng-controller="SignUpController" class="col-md-6" style="padding: 5px">
+        <div class="col-md-12">
+            <h3>Sign Up</h3>
+            <span>It's simple and free!</span>
+        </div>
+
+        <div class="col-md-12" style="padding: 5px">
+            <input class="form-control" ng-model="form.screenName" type="text" placeholder="Screen name">
+        </div>
+
+        <div class="col-md-6" style="padding: 5px">
+            <input class="form-control" ng-model="form.firstName" type="text" placeholder="First name">
+        </div>
+        <div class="col-md-6" style="padding: 5px">
+            <input class="form-control" ng-model="form.lastName" type="text" placeholder="Last name">
+        </div>
+
+        <div class="col-md-12" style="padding: 5px">
+            <input class="form-control" ng-model="form.primaryEmail" type="text" placeholder="Email address">
+        </div>
+
+        <div class="col-md-12" style="padding: 5px">
+            <input class="form-control" ng-model="form.password" type="password" placeholder="New password">
+        </div>
+
+        <div class="col-md-12" style="padding: 5px">
+            <input name="gender" ng-model="form.gender" value="M" type="radio"> Male &nbsp;
+            <input name="gender" ng-model="form.gender" value="F" type="radio"> Female
+        </div>
+
+        <div class="col-md-12" style="padding: 5px">
+            <span ng-click="signUp(form)" class="btn btn-success">
+                <img ng-show="signupLoading" src="/assets/images/status/loading16.gif">
+                <i ng-hide="signupLoading" class="fa fa-sign-in"></i>
+                Sign Up
+            </span>
+        </div>
+
+        <div class="col-md-12" ng-show="messages.length" style="margin-top: 25px">
+            <h4 class="sk_error">Please correct the following:</h4>
+            <ul ng-repeat="message in messages">
+                <li class="sk_error">{{ message }}</li>
+            </ul>
+        </div>
+    </div>
+</div>

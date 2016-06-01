@@ -1,0 +1,96 @@
+.sk_add_icon {
+    color: #00ce80;
+}
+
+.sk_delete_icon {
+    border: 1px solid #aaaaaa;
+    border-radius: 4px;
+    color: #888888;
+    padding: 1px;
+}
+
+.sk_icon {
+    color: #00ee80;
+    cursor: pointer;
+    font-size: 14pt;
+}
+
+.sk_icon_bulb {
+    color: #ddd000;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.sk_icon_facebook {
+    color: #2040dd;
+}
+
+.sk_icon_linkedin {
+    color: #40a0ff;
+}
+
+.sk_icon_inactive {
+    color: #1090ef;
+    font-size: 14pt;
+}
+
+.sk_info {
+    color: #329dcd;
+}
+
+.sk_calender {
+    color: #cc4444;
+}
+
+.sk_comment {
+    color: #329dcd;
+}
+
+.sk_diamond {
+    color: #a7a7a7;
+}
+
+.sk_follow {
+    color: #00ce80;
+}
+
+.sk_group {
+    color: #329dcd;
+}
+
+.sk_levelup {
+    color: #329dcd;
+}
+
+.sk_message {
+    color: #329dcd;
+}
+
+.sk_news_feed {
+    color: #329dcd;
+}
+
+.sk_notifications {
+    color: #329dcd;
+}
+
+.sk_photo {
+    color: #ff00ff;
+}
+
+.sk_profile_edit {
+    color: #329dcd;
+}
+
+
+.sk_test {
+    color: #329dcd;
+}
+
+.sk_trophy {
+    color: goldenrod
+}
+
+.sk_user {
+    color: #329dcd;
+}

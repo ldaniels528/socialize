@@ -1,0 +1,12 @@
+<div class="home_notification">
+    <i class="fa" ng-class="getNotificationGlyphClass(notification)"></i> <span class="bold">{{ notification.title }}</span>
+    <span class="small pull-right home_mini_label">
+        {{ notification.creationTime | duration }}
+        <i ng-click="deleteNotification(notification)" class="fa fa-remove sk_delete"></i>
+    </span>
+    <div>
+        <img class="avatar16" ng-src="{{ getAvatarURL(notification.owner) }}">
+        <span ng-show="notification.type === 'EVENT'">Starts in {{ notification.eventTime | duration }}</span>
+        <span ng-hide="notification.type === 'EVENT'">{{ notification.text }}</span>
+    </div>
+</div>

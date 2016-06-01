@@ -1,0 +1,19 @@
+{
+  "name": "socialized",
+  "version": "0.8.24",
+  "private": true,
+  "dependencies": {
+    "bcrypt": "^0.8.6",
+    "body-parser": "^1.15.0",
+    "engine.io": "^1.6.8",
+    "express": "4.13.4",
+    "express-fileupload": "0.0.5",
+    "express-ws": "^2.0.0-beta",
+    "fs": "0.0.2",
+    "html": "0.0.10",
+    "http": "0.0.0",
+    "mongodb": "^2.1.18",
+    "request": "^2.72.0",
+    "splitargs": "0.0.7"
+  }
+}

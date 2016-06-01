@@ -1,0 +1,13 @@
+.sk_job_list {
+    color: #0080ff;
+}
+
+.sk_jobs_header {
+    border-bottom: 1px solid #aaaaaa;
+    font-weight: bold;
+    width: 100%;
+}
+
+.sk_jobs_spacer {
+    margin-top: 15px;
+}

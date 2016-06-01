@@ -1,0 +1,11 @@
+<div class="navi_text">
+    <img class="avatar16" ng-if="user().avatarURL" ng-src="{{ user().avatarURL }}">
+
+    <span ng-show="user().firstName || user().lastName"
+          ng-click="navigateToNewsFeed()"
+          class="sk_clickable">{{ showFullName(user()) }}</span>
+
+    <span ng-hide="user().firstName || user().lastName"
+          ng-click="navigateToNewsFeed()"
+          class="sk_clickable">{{ user().screenName }}</span>
+</div>

@@ -1,0 +1,29 @@
+<div ng-include src="'/assets/views/home/header.html'"></div>
+<div class="row" style="margin-top: 10px" ng-controller="PhotosController" ng-init="loadPhotos()">
+    <div ng-hide="photos.length">
+        <span class="bold">No photos found</span>
+    </div>
+    <div ng-show="photos.length">
+        <span class="home_mini_label bold pull-right" style="padding-right: 5px">{{ photos.length }} photos shown</span>
+        <br style="clear: both">
+    </div>
+
+    <div class="photo_border col-md-4" ng-repeat="photo in photos">
+        <div>
+            <a target="newwindow" ng-href="/api/posts/attachments/{{ photo._id }}">
+                <img class="photo_thumbnail" ng-src="/api/posts/attachments/{{ photo._id }}">
+            </a>
+        </div>
+        <div class="photo_info">
+            <span class="home_mini_label">{{ photo.fileName }}</span>
+        </div>
+        <div class="photo_info">
+            Uploaded: <span class="home_mini_label">{{ photo.uploadDate | duration }}</span>
+        </div>
+        <div class="photo_info">
+            Dimensions:
+            <span ng-show="photo.width || photo.height" class="home_mini_label">{{ photo.width }} x {{ photo.height }}</span>
+            <span ng-hide="photo.width || photo.height" class="sk_null">N/A</span>
+        </div>
+    </div>
+</div>

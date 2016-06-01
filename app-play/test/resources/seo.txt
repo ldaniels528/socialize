@@ -1,0 +1,46 @@
+meta: application-name => Business Insider
+meta: apple-mobile-web-app-title => Business Insider
+meta: description => Learning strategies that really work.
+meta: title => 4 strategies for remembering everything you learn
+meta: author => Drake Baer
+meta: date => 2015-10-22
+meta: news_keywords => Learning, Cognitive Function, Education, Productivity, Psychology, Features, Drake Baer,
+meta: theme-color => #ffffff
+meta: viewport => width=1024
+
+meta: article:publisher => businessinsider
+meta: article:author => http://www.businessinsider.com/author/drake-baer
+
+meta: fb:app_id => 155043519637
+
+meta: linkedin:owner => mid:1d5f7b
+
+meta: msapplication-TileColor => #1d5f7b
+meta: msapplication-TileImage => http://static6.businessinsider.com/assets/images/us/favicons/mstile-144x144.png?v=zXXjpe0lwg
+
+meta: og:title => 4 strategies for remembering everything you learn
+meta: og:description => Learning strategies that really work.
+meta: og:image => http://static1.businessinsider.com/image/56292a8e9dd7cc10008c3fde/4-strategies-for-remembering-everything-you-learn.jpg
+meta: og:type => article
+meta: og:url => http://www.businessinsider.com/how-to-remember-everything-you-learn-2015-10
+meta: og:site_name => Business Insider
+
+meta: sailthru.date => 2015-10-22
+meta: sailthru.description => Learning strategies that really work.
+meta: sailthru.verticals => warroom,education,science
+meta: sailthru.title => 4 strategies for remembering everything you learn
+meta: sailthru.image.full => http://static5.businessinsider.com/image/56292a629dd7cc1b008c4139/4-strategies-for-remembering-everything-you-learn.jpg
+meta: sailthru.image.thumb => http://static2.businessinsider.com/image/56292a629dd7cc1b008c4139-50-50/4-strategies-for-remembering-everything-you-learn.jpg
+meta: sailthru.author => Drake Baer
+meta: sailthru.tags => Learning, Cognitive Function, Education, Productivity, Psychology, Features, Drake Baer,
+
+meta: tbi-image => http://static5.businessinsider.com/image/56292a629dd7cc1b008c4139/4-strategies-for-remembering-everything-you-learn.jpg
+meta: tbi-vertical => warroom
+
+meta: twitter:image => http://static5.businessinsider.com/image/56292a629dd7cc1b008c4139/4-strategies-for-remembering-everything-you-learn.jpg
+meta: twitter:url => http://www.businessinsider.com/how-to-remember-everything-you-learn-2015-10
+meta: twitter:title => 4 strategies for remembering everything you learn
+meta: twitter:description => Learning strategies that really work.
+meta: twitter:card => summary_large_image
+meta: twitter:creator => drake_baer
+meta: twitter:site => bi_strategy

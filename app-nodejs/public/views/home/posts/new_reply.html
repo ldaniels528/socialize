@@ -1,0 +1,16 @@
+<div class="home_comment">
+    <div>
+        <img class="avatar16" ng-src="{{ getAvatarURL(post.submitter) }}">
+        <span class="home_poster">{{ showFullName() }}</span>
+    </div>
+    <input class="form-control" ng-model="reply_text" placeholder="Write a comment">
+
+    <div style="margin-top: 10px">
+        <span ng-click="publishReply(post, comment, reply_text)" class="btn btn-primary btn-sm btn-default">
+            <i class="fa fa-arrow-circle-right"></i> Reply
+        </span>
+        <span ng-click="comment.newReply = false" class="btn btn-danger btn-sm pull-right">
+            <i class="fa fa-remove"></i> Discard
+        </span>
+    </div>
+</div>

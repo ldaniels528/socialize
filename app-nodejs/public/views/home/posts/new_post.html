@@ -1,0 +1,49 @@
+<div class="home_post">
+    <div class="home_post_header">
+        <span class="pull-left" style="color: #0088aa">
+            <img class="avatar16" ng-src="{{ user().avatarURL }}">
+            <span class="home_poster">{{ showFullName(user()) }}</span>
+            <img ng-show="newPost.loading" src="/assets/images/status/loading16.gif">
+        </span>
+        <span class="pull-right">
+            <i ng-click="showUploadPanel()" class="fa fa-camera home_mini_label sk_clickable"></i>
+        </span>
+    </div>
+    <br style="clear: both">
+    <div ng-show="newPost.summary.title">
+        <h4 class="home_mini_label bold">{{ newPost.summary.title }}</h4>
+    </div>
+    <div ng-show="newPost.summary.description">
+        <span class="small">{{ newPost.summary.description }}</span>
+    </div>
+    <div>
+        <span ng-show="newPost.summary.publishedTime"
+              class="small">Published: {{ newPost.summary.publishedTime | date:"MM/dd/yyyy HH:mm:ss" }}</span>
+    </div>
+    <div ng-show="newPost.summary.thumbnailUrl">
+        <img class="home_news_image" ng-src="{{ newPost.summary.thumbnailUrl }}">
+    </div>
+    <div class="home_post_body" style="padding-top: 8px">
+        <input class="form-control"
+               type="text"
+               ng-model="newPost.text"
+               ng-change="detectURL(newPost)"
+               placeholder="Share your thoughts">
+    </div>
+    <div ng-if="isUploadVisible()" ng-include src="'/assets/views/home/posts/upload.html'"></div>
+    <div style="margin-top: 10px">
+        <span ng-click="publishPost(newPost)" class="btn btn-primary btn-sm">
+            <i class="fa fa-arrow-circle-right"></i> Post
+        </span>
+        <span ng-show="newPost.text.trim().length" ng-click="setupNewPost()" class="btn btn-danger btn-sm pull-right">
+            <i class="fa fa-remove"></i> Discard
+        </span>
+    </div>
+
+    <div ng-show="newPost.tags" style="border-top: 1px solid #cccccc; margin-top: 5px">
+        <i class="hash_tag fa fa-tags"></i>
+        <span class="hash_tag" ng-repeat="tag in getTags(newPost)">
+            <a class="hash_tag" ng-click="appendTag(tag)">{{ tag }}&nbsp;</a>
+        </span>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="home_post_info_panel">
+    <i ng-show="tags.length" class="hash_tag fa fa-tags"></i>
+    <span ng-repeat="tag in tags">
+       <a class="home_tag" ng-click="removeTag(tag)"><i class="fa fa-remove"></i> {{ tag }}</a>
+    </span>
+
+    <img ng-show="postsLoading" src="/assets/images/status/loading16.gif">
+
+    <span class="home_tag bold pull-right">{{ posts.length || 0 }} {{ !posts.length || post.length != 1 ? 'posts' : 'post' }} shown</span>
+    <br style="clear: both">
+</div>

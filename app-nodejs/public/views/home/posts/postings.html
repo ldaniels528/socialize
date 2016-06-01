@@ -1,0 +1,74 @@
+<div style="margin-top: 10px">
+    <div style="margin-top: 3px" ng-repeat="post in posts | orderBy:'-creationTime'">
+        <div class="home_post">
+            <div class="home_post_header">
+                <span class="pull-left" style="color: #0088aa">
+                    <img class="avatar16" ng-src="{{ getAvatarURL(post.submitter) }}">
+                    <span ng-click="navigateToProfileViewer(post.submitterId)"
+                          class="home_poster sk_clickable">{{ post.submitter.name }}</span>
+                </span>
+                <span class="home_mini_label small pull-right">{{ post.creationTime | duration }}</span>
+            </div>
+            <br style="clear : both">
+            <div ng-show="post.summary.title">
+                <a ng-href="{{ post.summary.url }}" target="newwindow">
+                    <h4 class="home_mini_label bold">{{ post.summary.title }}</h4>
+                </a>
+            </div>
+            <div ng-show="post.summary.description">
+                <span class="small">{{ post.summary.description }}</span>
+            </div>
+            <div>
+                <span ng-show="post.summary.publishedTime"
+                      class="small">Published: {{ post.summary.publishedTime | date:"MM/dd/yyyy HH:mm:ss" }}</span>
+            </div>
+            <div ng-show="post.summary.thumbnailUrl">
+                <img class="home_news_image" ng-src="{{ post.summary.thumbnailUrl }}">
+            </div>
+            <div class="home_post_body">
+                <careertalk ng-hide="post.summary" text="post.text" callback="appendTag(tag)"></careertalk>
+
+                <div>
+                    <a ng-repeat="attachment in post.attachments"
+                       ng-href="/api/posts/attachments/{{ attachment }}"
+                       target="new_window">
+                        <img class="home_thumbnail" ng-src="/api/posts/attachments/{{ attachment }}" />
+                    </a>
+                </div>
+
+                <div style="margin-top: 10px">
+                    <div style="margin-bottom: 10px">
+                        <span style="text-align: left">
+                            <span ng-hide="isLikedPost(post)">
+                                <i class="fa fa-thumbs-o-up home_icon"></i>
+                                <span ng-hide="post.likeLoading"><a class="hash_tag" ng-click="likePost(post)">Like</a></span>
+                                <img ng-show="post.likeLoading" src="/assets/images/status/loading16.gif">
+                            </span>
+                            <span ng-show="isLikedPost(post)">
+                                <i class="fa fa-thumbs-up home_icon"></i>
+                                <span ng-hide="post.likeLoading"><a class="hash_tag" ng-click="unlikePost(post)">Liked</a></span>
+                                <img ng-show="post.likeLoading" src="/assets/images/status/loading16.gif">
+                            </span>
+                            <span><i class="fa fa-comment-o home_icon home_post_action_spacing"></i> <a class="hash_tag" ng-click="setupNewComment(post)">Comment</a></span>
+                            <span class="home_post_action_spacing"><i class="fa fa-share-square-o home_icon"></i> <a class="hash_tag" href="">Share</a></span>
+                            <span ng-show="isRefreshable(post)" class="home_post_action_spacing">
+                                <i class="fa fa-cloud-download home_icon"></i> <a class="hash_tag" ng-click="updateWebSummary(post)">Reload</a>
+                                <img ng-show="post.refreshLoading" src="/assets/images/status/loading16.gif">
+                            </span>
+                            <span ng-show="isDeletable(post)" class="home_post_action_spacing">
+                                <i class="fa fa-minus-circle home_icon"></i> <a class="hash_tag" ng-click="deletePost(post)">Delete</a>
+                                <img ng-show="post.deleteLoading" src="/assets/images/status/loading16.gif">
+                            </span>
+                        </span>
+                        <span class="hash_tag pull-right">
+                            <span class="hash_tag" ng-show="post.likes">{{ post.likes }} Likes</span>
+                        </span>
+                    </div>
+                    <div ng-include src="'/assets/views/home/posts/comments.html'"></div>
+                    <div ng-include src="'/assets/views/home/posts/new_comment.html'"></div>
+                    <div ng-include src="'/assets/views/home/posts/tags.html'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div ng-include src="'/assets/views/home/header.html'"></div>
+<div class="row" style="margin-top: 10px">
+    <div ng-hide="events.length">
+        <span class="bold">No events found</span>
+     </div>
+    <div ng-show="events.length">
+        <span class="home_mini_label bold pull-right" style="padding-right: 5px">{{ events.length }} events shown</span>
+        <br style="clear: both">
+    </div>
+
+    <div class="home_notification" ng-repeat="event in events">
+        <div>
+            <i class="fa fa-calendar sk_calender"></i> {{ event.title }}
+            <span class="home_mini_label small pull-right">{{ event.eventTime | date:'MMM dd' }}</span>
+        </div>
+        <div>
+            <img class="avatar16" ng-src="{{ getAvatarURL(event.owner) }}">
+            <span>Starts in {{ event.eventTime | duration }}</span>
+        </div>
+    </div>
+</div>

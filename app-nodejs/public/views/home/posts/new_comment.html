@@ -1,0 +1,16 @@
+<div class="home_comment" ng-if="post.newComment">
+    <div>
+        <img class="avatar16" ng-src="{{ getAvatarURL(post.submitter) }}">
+        <span class="home_poster">{{ showFullName() }}</span>
+    </div>
+    <input class="form-control" ng-model="comment_text" placeholder="Write a comment">
+
+    <div style="margin-top: 10px">
+        <span ng-click="publishComment(post, comment_text)" class="btn btn-primary btn-sm btn-default">
+            <i class="fa fa-arrow-circle-right"></i> Post
+        </span>
+        <span ng-click="post.newComment = false" class="btn btn-danger btn-sm pull-right">
+            <i class="fa fa-remove"></i> Discard
+        </span>
+    </div>
+</div>

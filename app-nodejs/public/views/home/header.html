@@ -1,0 +1,25 @@
+<div class="row home_info home_style">
+    <div style="display: inline; float: left; margin-right: 10px">
+        <img class="avatar64" ng-if="user().avatarURL" ng-src="{{ user().avatarURL }}">
+    </div>
+    <div style="display: inline">
+        <div>
+            <span ng-show="user().firstName || user().lastName" class="name_line">{{ showFullName(user()) }}</span>
+            <span ng-hide="user().firstName || user().lastName" class="name_line">{{ user().screenName }}</span>
+            <span class="home_level pull-right">{{ user().likes || 0 }}</span>
+        </div>
+
+        <div ng-show="user().title">
+            {{ user().title }} <span ng-if="user().company">at {{ user().company }}</span>
+        </div>
+        <div ng-hide="user().title">
+            <span class="sk_null">No position information provided</span>
+        </div>
+
+        <div>
+            <a class="hash_tag" ng-click="viewRecentActivity()">Your recent activity</a>
+            <span class="pull-right">{{ user().followers.length || 0 | number }} followers</span>
+        </div>
+    </div>
+    <br style="clear: both" />
+</div>

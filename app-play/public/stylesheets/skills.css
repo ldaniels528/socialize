@@ -1,0 +1,98 @@
+ol.skill_list {
+    list-style-type: upper-alpha;
+}
+
+ul.skill_list {
+
+}
+
+.skills_options_border {
+    border: 1px solid #aaaaaa;
+    border-radius: 6px;
+    margin: 6px;
+    padding: 6px;
+}
+
+.skills_learning_modes_panel {
+    margin-top: 15px;
+}
+
+.skills_question_number {
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    background: white;
+    color: #888888;
+    padding: 0px 4px 0px 4px;
+}
+
+.skills_question_number_null {
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    color: #888888;
+    padding: 0px 4px 0px 4px;
+}
+
+.skill_border {
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+    background: #eeeeee;
+    padding: 6px
+}
+
+.skill_correct {
+    color: #00aa00;
+}
+
+.skill_incorrect {
+    color: #aa0000
+}
+
+.skill_margin_10 {
+    margin-bottom: 10px
+}
+
+.skill_null {
+    color: #aaaaaa;
+}
+
+.skill_pad_10 {
+    padding-bottom: 10px
+}
+
+.skill_question {
+
+}
+
+.skill_results_bar {
+    border-bottom: 1px solid #aaaaaa;
+    margin-bottom: 10px;
+    padding: 6px
+}
+
+.skill_warning {
+    color: #eeaa00;
+}
+
+.skill_tag {
+    border-radius: 4px 4px 4px 4px;
+    background: #ff8000;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+}
+
+.skill_tag_null {
+    border-radius: 4px 4px 4px 4px;
+    background: #aaaaaa;
+    color: #eeeeee;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+}

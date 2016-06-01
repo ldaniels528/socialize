@@ -1,0 +1,13 @@
+<div class="navi_text" ng-repeat="menu in menus">
+    <div class="home_divider">
+        <span class="home_label">{{ menu.text }}</span>
+    </div>
+    <div ng-repeat="item in menu.items">
+        <div ng-if="item.include" ng-include src="item.include"></div>
+        <i ng-if="!item.include" ng-class="item.iconClass"></i>
+        <span ng-if="item.action">
+            <a class="sk_relaxed sk_clickable" ng-click="item.action()">{{ item.text }}</a>
+        </span>
+        <span ng-if="!item.action">{{ item.text }}</span>
+    </div>
+</div>

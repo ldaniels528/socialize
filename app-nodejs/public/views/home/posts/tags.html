@@ -1,0 +1,6 @@
+<div style="border-top: 1px solid #cccccc">
+    <i class="hash_tag fa fa-tags"></i>
+    <span class="hash_tag" ng-repeat="tag in getTags(post)">
+        <a class="hash_tag" ng-click="appendTag(tag)">{{ tag }}&nbsp;</a>
+    </span>
+</div>

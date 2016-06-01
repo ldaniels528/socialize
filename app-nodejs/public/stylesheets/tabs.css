@@ -1,0 +1,45 @@
+.sk_logout {
+    color: white;
+    font-weight: bold;
+    vertical-align: bottom;
+}
+
+.sk_tab_bar {
+    background: #00ee80;;
+    border: 1px solid #00de70;
+    margin-bottom: 5px;
+}
+
+.sk_tab {
+    color: #00ee80;
+    font-weight: bold;
+    vertical-align: bottom;
+}
+
+.sk_tab_inactive {
+    color: #1090ef;
+    font-weight: bold;
+    vertical-align: bottom;
+}
+
+.sk_tab_margin_right_30 {
+    margin-right: 30px;
+}
+
+.sk_tab_hover {
+    color: #ff8000;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.sk_tab_icon {
+    color: #00ee80;
+}
+
+.sk_tab_icon_selected {
+    color: #0080ef;
+}
+
+.sk_tab_selected {
+    color: #0080ef;
+}

@@ -1,0 +1,34 @@
+<div class="home_comment" ng-repeat="comment in post.comments">
+    <div>
+        <img class="avatar16" ng-src="{{ getAvatarURL(comment.submitter) }}">
+        <span ng-click="navigateToProfileViewer(comment.submitterId)"
+              class="home_poster sk_clickable">{{ comment.submitter.name }}</span>
+        <careertalk text="comment.text"></careertalk>
+    </div>
+    <div>
+        <!-- Like/UnLike -->
+        <span ng-hide="isLikedComment(comment)">
+            <i class="hash_tag fa fa-thumbs-o-up"></i>
+            <span ng-hide="comment.likeLoading"><a class="hash_tag" ng-click="likeComment(post._id, comment)">Like</a></span>
+            <img ng-show="comment.likeLoading" src="/assets/images/status/loading16.gif">
+        </span>
+        <span ng-show="isLikedComment(comment)">
+            <i class="hash_tag fa fa-thumbs-up"></i>
+            <span ng-hide="comment.likeLoading"><a class="hash_tag"  ng-click="unlikeComment(post._id, comment)">Liked</a></span>
+            <img ng-show="comment.likeLoading" src="/assets/images/status/loading16.gif">
+        </span> &nbsp;&nbsp;&nbsp;
+
+        <!-- Reply -->
+        <i class="fa fa-comment-o"></i>
+        <a ng-hide="comment.likeLoading" ng-click="setupNewReply(comment)" class="hash_tag" ng-click="">Reply</a>
+
+        <!-- Commented time -->
+        <span class="home_mini_label small pull-right">{{ comment.creationTime | duration }}</span>
+    </div>
+
+    <!-- Replies -->
+    <div ng-include src="'/assets/views/home/posts/replies.html'"></div>
+    <div ng-show="comment.newReply">
+        <div style="padding-left: 16px" ng-include src="'/assets/views/home/posts/new_reply.html'"></div>
+    </div>
+</div>

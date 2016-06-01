@@ -1,0 +1,17 @@
+<script type="text/ng-template" id="reactive_search.html">
+    <div class="sk_result_item media-bottom">
+        <img ng-if="match.model.type == 'USER'" class="avatar16" ng-src="{{ match.model.avatarURL }}">
+
+        <i ng-if="match.model.type === 'EVENT' && !match.model.avatarURL" class="fa fa-calendar sk_calender avatar16"></i>
+        <img ng-if="match.model.type === 'EVENT' && match.model.avatarURL" class="avatar16" ng-src="{{ match.model.avatarURL }}">
+
+        <i ng-if="match.model.type === 'GROUP' && !match.model.avatarURL" class="fa fa-users sk_group avatar16"></i>
+        <img ng-if="match.model.type === 'GROUP' && match.model.avatarURL" class="avatar16" ng-src="{{ match.model.avatarURL }}">
+
+        <i ng-if="match.model.type === 'ORGANIZATION' && !match.model.avatarURL" class="fa fa-institution sk_group avatar16"></i>
+        <img ng-if="match.model.type === 'ORGANIZATION' && match.model.avatarURL" class="avatar16" ng-src="{{ match.model.avatarURL }}">
+
+        <span>{{ match.model.name }}</span> &nbsp;
+        <span class="pull-right sk_null">{{ match.model.description }}</span>
+    </div>
+</script>

@@ -1,0 +1,32 @@
+{
+  "name": "socialized",
+  "description": "A skills development application portal",
+  "main": "server.js",
+  "authors": [
+    "Lawrence Daniels <lawrence.daniels@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ldaniels528/socialized",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.3",
+    "angular": "angularjs#^1.5.6",
+    "bootstrap": "^3.3.6",
+    "AngularJS-Toaster": "toaster#^1.2.0",
+    "angular-cookies": "^1.5.3",
+    "angular-file-upload": "^2.2.0",
+    "angular-highlightjs": "^0.6.1",
+    "angular-route": "^1.5.3",
+    "angular-sanitize": "^1.5.3",
+    "font-awesome": "^4.5.0",
+    "angular-bootstrap": "0.14.3",
+    "angular-animate": "^1.5.3"
+  }
+}

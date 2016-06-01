@@ -1,0 +1,60 @@
+@()
+<!DOCTYPE html>
+<html ng-app="Socialized">
+<head>
+    <title>Socialized: A social network for Developers</title>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="developer development employment job opportunties skills socialnetwork software">
+    <meta name="og:title" content="Socialized - Advance your career now!">
+    <meta name="og:description" content="The ultimate skill and advancement tool">
+    <meta name="og:url" content="http://socialized.cloudapp.net">
+    <meta name="og:site_name" content="Socialized">
+    <meta name="og:image" content="/assets/images/thumbnails/Socialized_thumbnail.png">
+    <link href='@routes.Assets.versioned("images/favicon.png")' type="image/png" rel="shortcut icon">
+
+    <!-- WebJar Stylesheets -->
+    <link href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))' type="text/css" rel="stylesheet" media="screen">
+    <link href='@routes.WebJarAssets.at(WebJarAssets.locate("font-awesome.min.css"))' type="text/css" rel="stylesheet" media="screen">
+    <link href='@routes.WebJarAssets.at(WebJarAssets.locate("toaster.css"))' type="text/css" rel="stylesheet" media="screen">
+
+    <!-- WebJar JS libraries -->
+    <script src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))' type="text/javascript"></script>
+    <script src='@routes.WebJarAssets.at(WebJarAssets.locate("angular.min.js"))' type="text/javascript"></script>
+    <script src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-animate.min.js"))' type="text/javascript"></script>
+    <script src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-cookies.min.js"))' type="text/javascript"></script>
+    <script src="@routes.WebJarAssets.at(WebJarAssets.locate("angular-file-upload.min.js"))" type="text/javascript"></script>
+    <script src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-route.min.js"))' type="text/javascript"></script>
+    <script src='@routes.WebJarAssets.at(WebJarAssets.locate("angular-sanitize.min.js"))' type="text/javascript"></script>
+    <script src='@routes.WebJarAssets.at(WebJarAssets.locate("toaster.js"))' type="text/javascript"></script>
+    <script src='@routes.WebJarAssets.at(WebJarAssets.locate("ui-bootstrap-tpls.min.js"))' type="text/javascript"></script>
+
+    <!-- Skilled Stylesheets -->
+    <link href='@routes.Assets.versioned("stylesheets/about.css")' type="text/css" rel="stylesheet" media=screen>
+    <link href='@routes.Assets.versioned("stylesheets/icons.css")' type="text/css" rel="stylesheet" media=screen>
+    <link href='@routes.Assets.versioned("stylesheets/index.css")' type="text/css" rel="stylesheet" media=screen>
+    <link href='@routes.Assets.versioned("stylesheets/home/home.css")' type="text/css" rel="stylesheet" media=screen>
+    <link href='@routes.Assets.versioned("stylesheets/home/photos.css")' type="text/css" rel="stylesheet" media=screen>
+    <link href='@routes.Assets.versioned("stylesheets/jobs.css")' type="text/css" rel="stylesheet" media=screen>
+    <link href='@routes.Assets.versioned("stylesheets/skills.css")' type="text/css" rel="stylesheet" media=screen>
+    <link href='@routes.Assets.versioned("stylesheets/tabs.css")' type="text/css" rel="stylesheet" media=screen>
+
+    <!-- Local JavaScript Resources -->
+    <script src="@routes.Assets.versioned("javascripts/socialized-angularjs-fastopt.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/socialized-angularjs-launcher.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/compile-directive.js")" type="text/javascript"></script>
+</head>
+
+<body ng-controller="MainController" ng-init="init()" ng-cloak>
+    <div ng-if="!isLoginPage()" class="row">
+        <div class="form-group" ng-include src="'/assets/views/partials/header.html'"></div>
+    </div>
+
+    <toaster-container toaster-options="{'position-class': 'toast-container','time-out': 3000, 'close-button':true}">
+    </toaster-container>
+
+    <div ng-view ng-cloak></div>
+    <div ng-include src="'/assets/views/partials/reactive_search.html'"></div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<div class="sk_title_bar col-md-12" style="padding-top: 4px; padding-bottom: 4px">
+    <div class="col-md-3">
+        <span class="sk_tab" ng-repeat="tab in tabs" ng-click="setActiveTab(tab)">
+            <i class="fa sk_font24" ng-class="tab.icon + ' ' + (isSelectedTab(tab) ? 'sk_tab_icon_selected' : (tab.hover ? 'sk_tab_hover' : 'sk_tab_icon'))"></i>
+            <span class="sk_tab_margin_right_30 sk_font16"
+                ng-mouseenter="tab.hover = true"
+                ng-mouseleave="tab.hover = false"
+                ng-class="isSelectedTab(tab) ? 'sk_tab_selected' : (tab.hover ? 'sk_tab_hover' : '')">{{ tab.name }}</span>
+        </span>
+    </div>
+    <div class="col-md-6">
+        <div style="display: inline" class="col-md-9 pull-left">
+            <input class="form-control" ng-model="searchTerm" type="text"
+                    placeholder="Search for People, Events and Groups"
+                    typeahead="item as formatSearchResult(item) for item in autoCompleteSearch($viewValue)"
+                    typeahead-template-url="reactive_search.html"
+                    typeahead-loading="loading"
+                    typeahead-on-select="onSelectedItem($item, $model, $label)"
+                    popover-trigger="focus">
+        </div>
+        <div style="display: inline" class="pull-left">
+            <span class="btn btn-primary"><i class="fa fa-search"></i></span>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <span class="pull-left">
+            <img class="avatar32" ng-if="!loading && user().avatarURL" ng-src="{{ user().avatarURL }}">
+            <img class="avatar32" ng-if="loading || !user().avatarURL" src="/assets/images/status/loading32.gif">
+            <i class="fa media-bottom" ng-class="isConnected() ? 'fa-link sk_connected' : 'fa-unlink sk_icon_inactive'" title="{{ isConnected() ? 'Connected' : 'Not connected'  }} to Socialized"></i> &nbsp;
+
+            <!-- notifications -->
+            <span uib-dropdown on-toggle="toggled(open)">
+                <a id="simple-dropdown" class="sk_drop_down" uib-dropdown-toggle>
+                    <i ng-class="notifications.length ? 'sk_icon' : 'sk_icon_inactive'" class="fa fa-bell media-bottom"></i>
+                    <span ng-show="notifications.length" class="sk_notification_count">{{ notifications.length }}</span>
+                    <span ng-hide="notifications.length">&nbsp;</span>
+                </a>
+                <ul class="uib-dropdown-menu sk_notification_dropdown dropdown-menu-right" aria-labelledby="simple-dropdown">
+                    <li ng-repeat="notification in notifications | orderBy:'-creationTime'">
+                        <div ng-include src="'/assets/views/home/notification.html'"></div>
+                    </li>
+                </ul>
+            </span>
+
+            <i class="fa fa-comments media-bottom sk_icon_inactive"></i>
+        </span>
+        <span style="padding-right: 8px" class="pull-right">
+            <a class="sk_logout" ng-click="logout()">
+                <i class="fa fa-sign-out"></i> <span>Logout</span>
+            </a>
+        </span>
+    </div>
+</div>

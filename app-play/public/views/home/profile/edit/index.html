@@ -1,0 +1,66 @@
+<div class="row" ng-controller="ProfileEditorController" ng-init="initProfileEditor()">
+    <div class="home_info home_style">
+        <div style="display: inline; float: left; margin-right: 10px">
+            <img class="avatar64" ng-if="form.avatarURL" ng-src="{{ form.avatarURL }}">
+        </div>
+        <div style="display: inline">
+            <div>
+                <span ng-show="form.firstName || form.lastName" class="name_line">{{ showFullName(form) }}</span>
+                <span ng-hide="form.firstName || form.lastName" class="name_line">{{ form.screenName }}</span>
+                <i class="fa fa-edit sk_clickable"></i>
+            </div>
+
+            <div>
+                <!-- title/position -->
+                <span ng-show="form.title">{{ form.title }}</span>
+                <span ng-hide="form.title">works </span>
+                <i class="fa fa-edit sk_clickable"></i>
+
+                <!-- company -->
+                <span ng-if="form.company">at {{ form.company }}</span>
+                <i class="fa fa-edit sk_clickable"></i>
+            </div>
+        </div>
+        <br style="clear: both" />
+    </div>
+
+    <div class="col-md-12">
+        <div class="col-md-12" style="padding: 5px">
+            <span class="name_line">{{ form.screenName }}</span>
+        </div>
+
+        <div class="col-md-6" style="padding: 5px">
+            <input class="form-control" ng-model="form.firstName" type="text" placeholder="First name">
+        </div>
+        <div class="col-md-6" style="padding: 5px">
+            <input class="form-control" ng-model="form.lastName" type="text" placeholder="Last name">
+        </div>
+
+        <div class="col-md-12" style="padding: 5px">
+            <input class="form-control" ng-model="form.primaryEmail" type="text" placeholder="Email address">
+        </div>
+
+        <div class="col-md-12" style="padding: 5px">
+            <input class="form-control" ng-model="form.avatarURL" type="text" placeholder="Your Avatar URL">
+        </div>
+
+        <div class="col-md-12" style="padding: 5px">
+            <input class="form-control" ng-model="form.title" type="text" placeholder="Title or position">
+        </div>
+
+        <div class="col-md-12" style="padding: 5px">
+            <input class="form-control" ng-model="form.company" type="text" placeholder="Company name">
+        </div>
+
+        <div class="col-md-12" style="padding: 5px">
+            <input name="gender" ng-model="form.gender" value="M" type="radio"> Male &nbsp;
+            <input name="gender" ng-model="form.gender" value="F" type="radio"> Female
+        </div>
+
+        <div class="col-md-12">
+            <span ng-click="navigateToNewsFeed()" class="btn btn-warning pull-left">Cancel</span>
+            <span ng-click="updateProfile(form)" class="btn btn-success pull-right">Update</span>
+        </div>
+
+    </div>
+</div>

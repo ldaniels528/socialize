@@ -1,0 +1,10 @@
+.follow_us_bar {
+    background: #eeeeee;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.follow_us {
+    font-weight: bold;
+}

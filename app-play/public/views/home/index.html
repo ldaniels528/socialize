@@ -1,0 +1,11 @@
+<div class="row home_padding" ng-controller="HomeController" ng-init="initHome()">
+    <div class="col-md-2">
+        <div ng-include src="'/assets/views/common/menus.html'"></div>
+    </div>
+    <div class="col-md-7">
+        <div ng-include src="getActiveView()"></div>
+    </div>
+    <div class="col-md-3">
+        <div ng-include src="'/assets/views/home/entourage.html'"></div>
+    </div>
+</div>
