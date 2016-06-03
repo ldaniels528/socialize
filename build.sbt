@@ -5,7 +5,7 @@ import sbt.Project.projectToRef
 import sbt._
 
 val appVersion = "0.8.25"
-val meanjsVersion = "0.1.11"
+val meanjsVersion = "0.1.12"
 
 val _scalaVersion = "2.11.8"
 val akkaVersion = "2.4.4"
@@ -61,6 +61,7 @@ lazy val angularjs = (project in file("app-angularjs"))
     organization := "com.github.ldaniels528",
     version := appVersion,
     libraryDependencies ++= Seq(
+      "com.github.ldaniels528" %%% "means-core-browser" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-angularjs-core" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-angularjs-animate" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-angularjs-cookies" % meanjsVersion,

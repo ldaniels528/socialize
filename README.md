@@ -18,6 +18,7 @@ been a great test bed for me in terms of ensuring that most of the features offe
 * [Scala 2.11.8+] (http://scala-lang.org/download/)
 * [Scala.js 0.6.8] (http://www.scala-js.org/)
 * [SBT 0.13.11+] (http://www.scala-sbt.org/download.html)
+* [MEANS.js 0.1.12] (https://github.com/ldaniels528/MEANS.js)
 
 #### Building the MEANS.js + Play application distributable (AngularJS frontend, Play backend)
 
