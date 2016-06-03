@@ -8,7 +8,7 @@ import com.socialized.javascript.models._
 import com.socialized.javascript.services._
 import com.socialized.javascript.ui.MainTab
 import org.scalajs.dom
-import com.github.ldaniels528.meansjs.core.console
+import com.github.ldaniels528.meansjs.core.browser.console
 
 import scala.annotation.tailrec
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue

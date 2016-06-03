@@ -9,7 +9,7 @@ import com.github.ldaniels528.meansjs.angularjs.{Controller, Scope, injected}
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import com.socialized.javascript.models.InboxMessage
 import com.socialized.javascript.services._
-import com.github.ldaniels528.meansjs.core.console
+import com.github.ldaniels528.meansjs.core.browser.console
 
 import scala.concurrent.duration._
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue

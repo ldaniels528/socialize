@@ -4,7 +4,7 @@ import com.github.ldaniels528.meansjs.angularjs.Attributes
 import com.github.ldaniels528.meansjs.angularjs.{Directive, JQLite, Scope, angular}
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import org.scalajs.dom
-import com.github.ldaniels528.meansjs.core.console
+import com.github.ldaniels528.meansjs.core.browser.console
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSBracketAccess, ScalaJSDefined}

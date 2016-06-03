@@ -7,7 +7,7 @@ import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import com.socialized.javascript.models.{Attachment, User}
 import com.socialized.javascript.services.{MySessionService, PostService}
 import org.scalajs.dom
-import com.github.ldaniels528.meansjs.core.console
+import com.github.ldaniels528.meansjs.core.browser.console
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js

@@ -10,7 +10,7 @@ import com.socialized.javascript.models._
 import com.socialized.javascript.services._
 import com.socialized.javascript.ui.{Menu, MenuItem}
 import org.scalajs.dom
-import com.github.ldaniels528.meansjs.core.console
+import com.github.ldaniels528.meansjs.core.browser.console
 
 import scala.concurrent.Future
 import scala.concurrent.duration._

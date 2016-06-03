@@ -8,7 +8,7 @@ import com.socialized.javascript.controllers._
 import com.socialized.javascript.controllers.home._
 import com.socialized.javascript.directives.{CareerTalkDirective, CompileDirective}
 import com.socialized.javascript.services._
-import com.github.ldaniels528.meansjs.core.console
+import com.github.ldaniels528.meansjs.core.browser.console
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExport

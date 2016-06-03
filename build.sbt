@@ -4,14 +4,14 @@ import sbt.Keys._
 import sbt.Project.projectToRef
 import sbt._
 
-val appVersion = "0.8.24"
-val meanjsVersion = "0.1.10"
+val appVersion = "0.8.25"
+val meanjsVersion = "0.1.11"
 
 val _scalaVersion = "2.11.8"
 val akkaVersion = "2.4.4"
 val playVersion = "2.4.6"
 
-val paradisePluginVersion = "3.0.0-M1" //"2.1.0"
+val paradisePluginVersion = "3.0.0-M1"
 val scalaJsDomVersion = "0.9.0"
 val scalaJsJQueryVersion = "0.9.0"
 

@@ -7,7 +7,7 @@ import com.github.ldaniels528.meansjs.angularjs.toaster._
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import com.socialized.javascript.models.{Session, User, UserLike}
 import com.socialized.javascript.services.MySessionService.{INITIAL_GRACE_PERIOD, SESSION_COOKIE_NAME}
-import com.github.ldaniels528.meansjs.core.console
+import com.github.ldaniels528.meansjs.core.browser.console
 
 import scala.concurrent.duration._
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue

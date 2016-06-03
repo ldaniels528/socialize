@@ -1,7 +1,7 @@
 package com.socialized.javascript
 
 import com.github.ldaniels528.meansjs.angularjs.angular
-import com.github.ldaniels528.meansjs.core.console
+import com.github.ldaniels528.meansjs.core.browser.console
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 
 import scala.language.postfixOps

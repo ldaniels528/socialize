@@ -8,7 +8,7 @@ import com.socialized.javascript.forms.ProfileEditForm
 import com.socialized.javascript.models.User
 import com.socialized.javascript.services.{MySessionService, UserService}
 import org.scalajs.dom
-import com.github.ldaniels528.meansjs.core.console
+import com.github.ldaniels528.meansjs.core.browser.console
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js

@@ -4,7 +4,7 @@ import com.github.ldaniels528.meansjs.angularjs.AngularJsHelper._
 import com.github.ldaniels528.meansjs.angularjs.{Service, injected}
 import com.socialized.javascript.models.{Post, Submitter, User}
 import com.socialized.javascript.services.UserService
-import com.github.ldaniels528.meansjs.core.console
+import com.github.ldaniels528.meansjs.core.browser.console
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.scalajs.js

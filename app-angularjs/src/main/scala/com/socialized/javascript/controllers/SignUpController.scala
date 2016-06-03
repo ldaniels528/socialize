@@ -7,7 +7,7 @@ import com.github.ldaniels528.meansjs.angularjs.{Controller, Scope, injected}
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import com.socialized.javascript.forms.SignUpForm
 import com.socialized.javascript.services.{MySessionService, SignUpService}
-import com.github.ldaniels528.meansjs.core.console
+import com.github.ldaniels528.meansjs.core.browser.console
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js

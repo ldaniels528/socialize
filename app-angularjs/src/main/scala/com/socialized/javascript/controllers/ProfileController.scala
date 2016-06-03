@@ -3,7 +3,7 @@ package com.socialized.javascript.controllers
 import com.github.ldaniels528.meansjs.angularjs.AngularJsHelper._
 import com.github.ldaniels528.meansjs.angularjs._
 import com.github.ldaniels528.meansjs.angularjs.toaster.Toaster
-import com.github.ldaniels528.meansjs.core.console
+import com.github.ldaniels528.meansjs.core.browser.console
 import com.socialized.javascript.controllers.home.SubmitterCacheService
 import com.socialized.javascript.models.{Post, User}
 import com.socialized.javascript.services.{MySessionService, PostService, UserService}
