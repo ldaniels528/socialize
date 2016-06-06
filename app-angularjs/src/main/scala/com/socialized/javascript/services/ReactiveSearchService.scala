@@ -15,7 +15,7 @@ import scala.scalajs.js
 class ReactiveSearchService($http: Http) extends Service {
 
   def search(searchTerm: String, maxResults: Int)(implicit ec: ExecutionContext) = {
-    $http.get[js.Array[EntitySearchResult]](s"/api/search?searchTerm=$searchTerm&maxResults=$maxResults").map(_.data)
+    $http.get[js.Array[EntitySearchResult]](s"/api/search?searchTerm=$searchTerm&maxResults=$maxResults")
   }
 
 }

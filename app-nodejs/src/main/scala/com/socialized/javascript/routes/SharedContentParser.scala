@@ -2,7 +2,7 @@ package com.socialized.javascript.routes
 
 import com.github.ldaniels528.meansjs.nodejs.request.Request
 import com.github.ldaniels528.meansjs.nodejs.splitargs.SplitArgs
-import com.github.ldaniels528.meansjs.nodejs.{Require, console}
+import com.github.ldaniels528.meansjs.nodejs.{NodeRequire, console}
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import com.socialized.javascript.StringHelper._
 
@@ -12,7 +12,7 @@ import scala.concurrent.{ExecutionContext, Future}
   * Shared Content Parser
   * @author lawrence.daniels@gmail.com
   */
-class SharedContentParser(require: Require) {
+class SharedContentParser(require: NodeRequire) {
   val splitArgs = require[SplitArgs]("splitargs")
   val request = require[Request]("request")
 

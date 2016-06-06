@@ -21,7 +21,7 @@ class NotificationService($http: Http, @injected("WebSocketService") webSocketSv
     * @return a promise of the newly created notification
     */
   def createNotification(userID: String, notification: Notification)(implicit ec: ExecutionContext) = {
-    $http.post[Notification](s"/api/notifications/user/$userID", notification).map(_.data)
+    $http.post[Notification](s"/api/notifications/user/$userID", notification)
   }
 
   /**
@@ -30,7 +30,7 @@ class NotificationService($http: Http, @injected("WebSocketService") webSocketSv
     * @return a promise of an [[OperationResult indicator]] as to whether the notification was deleted
     */
   def deleteNotification(notificationID: String)(implicit ec: ExecutionContext) = {
-    $http.delete[OperationResult](s"/api/notifications/$notificationID").map(_.data)
+    $http.delete[OperationResult](s"/api/notifications/$notificationID")
   }
 
   /**
@@ -39,7 +39,7 @@ class NotificationService($http: Http, @injected("WebSocketService") webSocketSv
     * @return a promise of an array of [[Notification notifications]]
     */
   def getNotifications(maxResults: Int = 10)(implicit ec: ExecutionContext) = {
-    $http.get[js.Array[Notification]](s"/api/notifications?maxResults=$maxResults").map(_.data)
+    $http.get[js.Array[Notification]](s"/api/notifications?maxResults=$maxResults")
   }
 
   /**
@@ -49,7 +49,7 @@ class NotificationService($http: Http, @injected("WebSocketService") webSocketSv
     * @return a promise of an array of [[Notification notifications]]
     */
   def getNotificationsByUserID(userID: String, unread: Boolean)(implicit ec: ExecutionContext) = {
-    $http.get[js.Array[Notification]](s"/api/notifications/user/$userID/$unread").map(_.data)
+    $http.get[js.Array[Notification]](s"/api/notifications/user/$userID/$unread")
   }
 
   /**

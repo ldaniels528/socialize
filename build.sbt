@@ -5,7 +5,7 @@ import sbt.Project.projectToRef
 import sbt._
 
 val appVersion = "0.8.25"
-val meanjsVersion = "0.1.12"
+val meanjsVersion = "0.1.13"
 
 val _scalaVersion = "2.11.8"
 val akkaVersion = "2.4.4"
@@ -40,7 +40,7 @@ val jsCommonSettings = Seq(
   relativeSourceMaps := true,
   persistLauncher := true,
   persistLauncher in Test := false,
-  homepage := Some(url("http://github.com.ldaniels528/socialized")),
+  homepage := Some(url("https://github.com/ldaniels528/socialized")),
   addCompilerPlugin("org.scalamacros" % "paradise" % paradisePluginVersion cross CrossVersion.full),
   libraryDependencies ++= Seq(
     "com.github.ldaniels528" %%% "means-core" % meanjsVersion,

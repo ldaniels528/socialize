@@ -20,7 +20,7 @@ class GroupService($http: Http) extends Service {
     * @return a promise of a [[com.socialized.javascript.models.Group group]]
     */
   def getGroupByID(groupID: String)(implicit ec: ExecutionContext) = {
-    $http.get[Group](s"/api/group/$groupID").map(_.data)
+    $http.get[Group](s"/api/group/$groupID")
   }
 
   /**
@@ -28,7 +28,7 @@ class GroupService($http: Http) extends Service {
     * @return a promise of a [[com.socialized.javascript.models.Group group]]
     */
   def getGroupByName(name: String)(implicit ec: ExecutionContext) = {
-    $http.get[Group](s"/api/group?name=$name").map(_.data)
+    $http.get[Group](s"/api/group?name=$name")
   }
 
   /**
@@ -37,7 +37,7 @@ class GroupService($http: Http) extends Service {
     * @return a promise of an array of [[com.socialized.javascript.models.Group groups]]
     */
   def getGroups(maxResults: Int = 20)(implicit ec: ExecutionContext) = {
-    $http.get[js.Array[Group]](s"/api/groups?maxResults=$maxResults").map(_.data)
+    $http.get[js.Array[Group]](s"/api/groups?maxResults=$maxResults")
   }
 
 }

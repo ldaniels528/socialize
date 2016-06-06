@@ -25,7 +25,7 @@ class UserService($http: Http) extends Service {
     * @return a promise of a [[com.socialized.javascript.models.User user]]
     */
   def getUserByID(userID: String)(implicit ec: ExecutionContext) = {
-    $http.get[User](s"/api/user/$userID").map(_.data)
+    $http.get[User](s"/api/user/$userID")
   }
 
   /**
@@ -34,7 +34,7 @@ class UserService($http: Http) extends Service {
     * @return a promise of a [[com.socialized.javascript.models.User user]]
     */
   def getUserByEmail(primaryEmail: String)(implicit ec: ExecutionContext) = {
-    $http.get[User](s"/api/users/email?primaryEmail=$primaryEmail").map(_.data)
+    $http.get[User](s"/api/users/email?primaryEmail=$primaryEmail")
   }
 
   /**
@@ -43,7 +43,7 @@ class UserService($http: Http) extends Service {
     * @return a promise of a [[com.socialized.javascript.models.User user]]
     */
   def getUserByName(username: String)(implicit ec: ExecutionContext) = {
-    $http.get[User](s"/api/users/name?username=$username").map(_.data)
+    $http.get[User](s"/api/users/name?username=$username")
   }
 
   /**
@@ -52,7 +52,7 @@ class UserService($http: Http) extends Service {
     * @return a promise of an updated [[com.socialized.javascript.models.User user]]
     */
   def updateUser(profile: ProfileEditForm)(implicit ec: ExecutionContext) = {
-    $http.post[User](s"/api/user", profile).map(_.data)
+    $http.post[User](s"/api/user", profile)
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -65,7 +65,7 @@ class UserService($http: Http) extends Service {
     * @return a promise of an image
     */
   def getAvatar(userID: String)(implicit ec: ExecutionContext) = {
-    $http.get[js.Any](s"/api/user/$userID/avatar").map(_.data)
+    $http.get[js.Any](s"/api/user/$userID/avatar")
   }
 
   /**
@@ -74,7 +74,7 @@ class UserService($http: Http) extends Service {
     * @return a promise of a [[Submitter submitter]]
     */
   def getSubmitter(userID: String)(implicit ec: ExecutionContext)  = {
-    $http.get[Submitter](s"/api/user/$userID/submitter").map(_.data)
+    $http.get[Submitter](s"/api/user/$userID/submitter")
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -88,7 +88,7 @@ class UserService($http: Http) extends Service {
     * @return a promise of a [[com.socialized.javascript.models.OperationResult result]]
     */
   def like(userID: String, endorserID: String)(implicit ec: ExecutionContext) = {
-    $http.put[OperationResult](s"/api/user/$userID/like/$endorserID").map(_.data)
+    $http.put[OperationResult](s"/api/user/$userID/like/$endorserID")
   }
 
   /**
@@ -98,7 +98,7 @@ class UserService($http: Http) extends Service {
     * @return a promise of a [[com.socialized.javascript.models.OperationResult result]]
     */
   def unlike(userID: String, endorserID: String)(implicit ec: ExecutionContext) = {
-    $http.put[OperationResult](s"/api/user/$userID/like/$endorserID").map(_.data)
+    $http.put[OperationResult](s"/api/user/$userID/like/$endorserID")
   }
 
   /////////////////////////////////////////////////////////////////////////////////
@@ -112,7 +112,7 @@ class UserService($http: Http) extends Service {
     * @return a promise of a [[com.socialized.javascript.models.OperationResult result]]
     */
   def follow(userID: String, followerID: String)(implicit ec: ExecutionContext) = {
-    $http.put[OperationResult](s"/api/user/$userID/follow/$followerID").map(_.data)
+    $http.put[OperationResult](s"/api/user/$userID/follow/$followerID")
   }
 
   /**
@@ -121,7 +121,7 @@ class UserService($http: Http) extends Service {
     * @return a promise of an array of followers
     */
   def getFollowers(followeeID: String)(implicit ec: ExecutionContext) = {
-    $http.get[js.Array[User]](s"/api/user/$followeeID/followers").map(_.data)
+    $http.get[js.Array[User]](s"/api/user/$followeeID/followers")
   }
 
   /**
@@ -131,7 +131,7 @@ class UserService($http: Http) extends Service {
     * @return a promise of a [[com.socialized.javascript.models.OperationResult result]]
     */
   def unfollow(userID: String, followerID: String)(implicit ec: ExecutionContext) = {
-    $http.delete[OperationResult](s"/api/user/$userID/follow/$followerID").map(_.data)
+    $http.delete[OperationResult](s"/api/user/$userID/follow/$followerID")
   }
 
 }

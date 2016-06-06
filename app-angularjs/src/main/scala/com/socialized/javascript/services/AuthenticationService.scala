@@ -21,7 +21,7 @@ class AuthenticationService($http: Http) extends Service {
     * @return a promise of an authenticated [[Session session]]
     */
   def authenticate(loginForm: LoginForm)(implicit ec: ExecutionContext) = {
-    $http.post[Session]("/api/signin", loginForm).map(_.data)
+    $http.post[Session]("/api/signin", loginForm)
   }
 
   /**
@@ -30,7 +30,7 @@ class AuthenticationService($http: Http) extends Service {
     * @return a promise of an [[Credential credential]]
     */
   def getCredentialByID(id: String)(implicit ec: ExecutionContext) = {
-    $http.get[Credential](s"/api/credential/$id").map(_.data)
+    $http.get[Credential](s"/api/credential/$id")
   }
 
   /**
@@ -38,7 +38,7 @@ class AuthenticationService($http: Http) extends Service {
     * @return a promise of the array of [[Credential credentials]]
     */
   def getCredentials(implicit ec: ExecutionContext) = {
-    $http.get[js.Array[Credential]]("/api/credentials").map(_.data)
+    $http.get[js.Array[Credential]]("/api/credentials")
   }
 
   /**
@@ -48,7 +48,7 @@ class AuthenticationService($http: Http) extends Service {
     * @return a promise of the newly created credential
     */
   def createCredential(username: String, password: String)(implicit ec: ExecutionContext) = {
-    $http.post[Credential]("/api/credentials", LoginForm(username, password)).map(_.data)
+    $http.post[Credential]("/api/credentials", LoginForm(username, password))
   }
 
 }

@@ -20,7 +20,7 @@ class UserSessionService($http: Http) extends Service {
     * @return a promise of a [[com.socialized.javascript.models.Session user session]]
     */
   def getSession(id: String)(implicit ec: ExecutionContext) = {
-    $http.get[Session](s"/api/session/$id").map(_.data)
+    $http.get[Session](s"/api/session/$id")
   }
 
   /**
@@ -29,7 +29,7 @@ class UserSessionService($http: Http) extends Service {
     * @return a promise of an array of user sessions
     */
   def getSessions(userIDs: js.Array[String])(implicit ec: ExecutionContext) = {
-    $http.get[js.Array[Session]](s"/api/sessions?${userIDs.map(id => s"userIDs=$id").mkString("&")}").map(_.data)
+    $http.get[js.Array[Session]](s"/api/sessions?${userIDs.map(id => s"userIDs=$id").mkString("&")}")
   }
 
 }

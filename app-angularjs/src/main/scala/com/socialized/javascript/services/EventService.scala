@@ -21,7 +21,7 @@ class EventService($http: Http) extends Service {
     * @return a promise of the newly created event
     */
   def createEvent(userID: String, event: Event)(implicit ec: ExecutionContext) = {
-    $http.post[Event](s"/api/events/user/$userID", event).map(_.data)
+    $http.post[Event](s"/api/events/user/$userID", event)
   }
 
   /**
@@ -30,7 +30,7 @@ class EventService($http: Http) extends Service {
     * @return a promise of a [[com.socialized.javascript.models.User user]]
     */
   def getEvents(userID: String)(implicit ec: ExecutionContext) = {
-    $http.get[js.Array[Event]](s"/api/events/user/$userID").map(_.data)
+    $http.get[js.Array[Event]](s"/api/events/user/$userID")
   }
 
   /**
@@ -39,7 +39,7 @@ class EventService($http: Http) extends Service {
     * @return a promise of a [[com.socialized.javascript.models.User user]]
     */
   def getUpcomingEvents(userID: String)(implicit ec: ExecutionContext) = {
-    $http.get[js.Array[Event]](s"/api/events/upcoming/$userID").map(_.data)
+    $http.get[js.Array[Event]](s"/api/events/upcoming/$userID")
   }
 
 }

@@ -1,7 +1,7 @@
 package com.socialized.javascript.routes
 
 import com.github.ldaniels528.meansjs.nodejs
-import com.github.ldaniels528.meansjs.nodejs.Require
+import com.github.ldaniels528.meansjs.nodejs.NodeRequire
 import com.github.ldaniels528.meansjs.nodejs.express.fileupload.{FileUpload, UploadedFiles}
 import com.github.ldaniels528.meansjs.nodejs.express.{Application, Request, Response}
 import com.github.ldaniels528.meansjs.nodejs.mongodb._
@@ -25,7 +25,7 @@ import scala.util.{Failure, Success}
   */
 object PostRoutes {
 
-  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext, require: Require, mongo: MongoDB, fileUpload: FileUpload) = {
+  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext, require: NodeRequire, mongo: MongoDB, fileUpload: FileUpload) = {
     implicit val postDAO = dbFuture.flatMap(_.getPostDAO)
     implicit val userDAO = dbFuture.flatMap(_.getUserDAO)
     implicit val attachmentDAO = dbFuture.map(_.getPostAttachmentDAO)

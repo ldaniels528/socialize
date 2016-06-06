@@ -20,7 +20,7 @@ class SignUpService($http: Http) extends Service {
     * @return a promise of the newly created [[Session session]]
     */
   def createAccount(form: SignUpForm)(implicit ec: ExecutionContext) = {
-    $http.post[Session]("/api/signup", form).map(_.data)
+    $http.post[Session]("/api/signup", form)
   }
 
 }

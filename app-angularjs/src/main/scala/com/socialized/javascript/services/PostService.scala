@@ -25,7 +25,7 @@ class PostService($http: Http) extends Service {
     * @return a promise of a [[com.socialized.javascript.models.Post post]]
     */
   def createComment(postID: String, comment: Comment)(implicit ec: ExecutionContext) = {
-    $http.post[Post](s"/api/post/$postID/comment", comment).map(_.data)
+    $http.post[Post](s"/api/post/$postID/comment", comment)
   }
 
   /**
@@ -36,7 +36,7 @@ class PostService($http: Http) extends Service {
     * @return a promise of the updated [[com.socialized.javascript.models.Post post]]
     */
   def likeComment(postID: String, commentID: String, userID: String)(implicit ec: ExecutionContext) = {
-    $http.put[Post](s"/api/post/$postID/comment/$commentID/like/$userID").map(_.data)
+    $http.put[Post](s"/api/post/$postID/comment/$commentID/like/$userID")
   }
 
   /**
@@ -47,7 +47,7 @@ class PostService($http: Http) extends Service {
     * @return a promise of the updated [[com.socialized.javascript.models.Post post]]
     */
   def unlikeComment(postID: String, commentID: String, userID: String)(implicit ec: ExecutionContext) = {
-    $http.delete[Post](s"/api/post/$postID/comment/$commentID/like/$userID").map(_.data)
+    $http.delete[Post](s"/api/post/$postID/comment/$commentID/like/$userID")
   }
 
   ///////////////////////////////////////////////////////////////////////////
@@ -62,7 +62,7 @@ class PostService($http: Http) extends Service {
     * @return a promise of a [[com.socialized.javascript.models.Post post]]
     */
   def createReply(postID: String, commentID: String, reply: Reply)(implicit ec: ExecutionContext) = {
-    $http.post[Post](s"/api/post/$postID/comment/$commentID/reply", reply).map(_.data)
+    $http.post[Post](s"/api/post/$postID/comment/$commentID/reply", reply)
   }
 
   /**
@@ -74,7 +74,7 @@ class PostService($http: Http) extends Service {
     * @return a promise of the updated [[com.socialized.javascript.models.Post post]]
     */
   def likeReply(postID: String, commentID: String, replyID: String, userID: String)(implicit ec: ExecutionContext) = {
-    $http.put[Post](s"/api/post/$postID/comment/$commentID/reply/$replyID/like/$userID").map(_.data)
+    $http.put[Post](s"/api/post/$postID/comment/$commentID/reply/$replyID/like/$userID")
   }
 
   /**
@@ -86,7 +86,7 @@ class PostService($http: Http) extends Service {
     * @return a promise of the updated [[com.socialized.javascript.models.Post post]]
     */
   def unlikeReply(postID: String, commentID: String, replyID: String, userID: String)(implicit ec: ExecutionContext) = {
-    $http.delete[Post](s"/api/post/$postID/comment/$commentID/reply/$replyID/like/$userID").map(_.data)
+    $http.delete[Post](s"/api/post/$postID/comment/$commentID/reply/$replyID/like/$userID")
   }
 
   ///////////////////////////////////////////////////////////////////////////
@@ -99,7 +99,7 @@ class PostService($http: Http) extends Service {
     * @return a promise of the newly created [[com.socialized.javascript.models.Post post]]
     */
   def createPost(post: Post)(implicit ec: ExecutionContext) = {
-    $http.post[Post]("/api/post", post).map(_.data)
+    $http.post[Post]("/api/post", post)
   }
 
   /**
@@ -108,7 +108,7 @@ class PostService($http: Http) extends Service {
     * @return a promise of the deletion result
     */
   def deletePost(postID: String)(implicit ec: ExecutionContext) = {
-    $http.delete[OperationResult](s"/api/post/$postID").map(_.data)
+    $http.delete[OperationResult](s"/api/post/$postID")
   }
 
   /**
@@ -118,7 +118,7 @@ class PostService($http: Http) extends Service {
     * @return a promise of the updated [[com.socialized.javascript.models.Post post]]
     */
   def likePost(postID: String, userID: String)(implicit ec: ExecutionContext) = {
-    $http.put[Post](s"/api/post/$postID/like/$userID").map(_.data)
+    $http.put[Post](s"/api/post/$postID/like/$userID")
   }
 
   /**
@@ -128,7 +128,7 @@ class PostService($http: Http) extends Service {
     * @return a promise of the updated [[com.socialized.javascript.models.Post post]]
     */
   def unlikePost(postID: String, userID: String)(implicit ec: ExecutionContext) = {
-    $http.delete[Post](s"/api/post/$postID/like/$userID").map(_.data)
+    $http.delete[Post](s"/api/post/$postID/like/$userID")
   }
 
   /**
@@ -137,7 +137,7 @@ class PostService($http: Http) extends Service {
     * @return a promise of the retrieved collection of attachments
     */
   def getAttachmentsByUserID(uid: String)(implicit ec: ExecutionContext) = {
-    $http.get[js.Array[Attachment]](s"/api/posts/attachments/user/$uid").map(_.data)
+    $http.get[js.Array[Attachment]](s"/api/posts/attachments/user/$uid")
   }
 
   /**
@@ -146,7 +146,7 @@ class PostService($http: Http) extends Service {
     * @return a promise of the retrieved [[com.socialized.javascript.models.Post post]]
     */
   def getPostByID(id: String)(implicit ec: ExecutionContext) = {
-    $http.get[Post](s"/api/post/$id").map(_.data)
+    $http.get[Post](s"/api/post/$id")
   }
 
   /**
@@ -154,7 +154,7 @@ class PostService($http: Http) extends Service {
     * @return a promise of an array of [[com.socialized.javascript.models.Post posts]]
     */
   def getPosts(implicit ec: ExecutionContext) = {
-    $http.get[js.Array[Post]]("/api/posts").map(_.data)
+    $http.get[js.Array[Post]]("/api/posts")
   }
 
   /**
@@ -163,7 +163,7 @@ class PostService($http: Http) extends Service {
     * @return a promise of an array of [[com.socialized.javascript.models.Post posts]]
     */
   def getPostsByUserID(aUserID: js.UndefOr[String])(implicit ec: ExecutionContext) = aUserID.toOption match {
-    case Some(id) => $http.get[js.Array[Post]](s"/api/posts/user/$id").map(_.data)
+    case Some(id) => $http.get[js.Array[Post]](s"/api/posts/user/$id")
     case None => getPosts
   }
 
@@ -173,7 +173,7 @@ class PostService($http: Http) extends Service {
     * @return a promise of an array of [[com.socialized.javascript.models.Post posts]]
     */
   def getNewsFeed(aUserID: js.UndefOr[String])(implicit ec: ExecutionContext) = aUserID.toOption match {
-    case Some(id) => $http.get[js.Array[Post]](s"/api/posts/user/$id/newsfeed").map(_.data)
+    case Some(id) => $http.get[js.Array[Post]](s"/api/posts/user/$id/newsfeed")
     case None => getPosts
   }
 
@@ -183,7 +183,7 @@ class PostService($http: Http) extends Service {
     * @return a promise of an array of [[com.socialized.javascript.models.Post posts]]
     */
   def getPostsByTag(tags: js.Array[String])(implicit ec: ExecutionContext) = {
-    $http.get[js.Array[Post]](s"/api/posts/tags?${tags.map(tag => s"tags=$tag").mkString("&")}").map(_.data)
+    $http.get[js.Array[Post]](s"/api/posts/tags?${tags.map(tag => s"tags=$tag").mkString("&")}")
   }
 
   /**
@@ -202,7 +202,7 @@ class PostService($http: Http) extends Service {
     * @return a promise of the updated [[com.socialized.javascript.models.Post post]]
     */
   def updatePost(post: Post)(implicit ec: ExecutionContext) = {
-    $http.put[Post]("/api/post", post).map(_.data)
+    $http.put[Post]("/api/post", post)
   }
 
   ///////////////////////////////////////////////////////////////////////////
@@ -215,7 +215,7 @@ class PostService($http: Http) extends Service {
     * @return the [[com.socialized.javascript.models.SharedContent shared content]]
     */
   def getSharedContent(url: String)(implicit ec: ExecutionContext) = {
-    $http.get[SharedContent](s"/api/social/content?url=${js.Dynamic.global.encodeURI(url)}").map(_.data)
+    $http.get[SharedContent](s"/api/social/content?url=${js.Dynamic.global.encodeURI(url)}")
   }
 
 }

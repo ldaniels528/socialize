@@ -20,7 +20,7 @@ class InboxMessageService($http: Http) extends Service {
     * @return a promise of an array of [[InboxMessage messages]]
     */
   def getMessages(userID: String)(implicit ec: ExecutionContext) = {
-    $http.get[js.Array[InboxMessage]](s"/api/messages/user/$userID").map(_.data)
+    $http.get[js.Array[InboxMessage]](s"/api/messages/user/$userID")
   }
 
 }

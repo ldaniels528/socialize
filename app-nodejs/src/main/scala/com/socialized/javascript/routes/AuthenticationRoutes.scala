@@ -3,12 +3,12 @@ package com.socialized.javascript.routes
 import com.github.ldaniels528.meansjs.nodejs.bcrypt.BCrypt
 import com.github.ldaniels528.meansjs.nodejs.express.{Application, Request, Response}
 import com.github.ldaniels528.meansjs.nodejs.mongodb._
-import com.github.ldaniels528.meansjs.nodejs.{Require, console}
+import com.github.ldaniels528.meansjs.nodejs.{NodeRequire, console}
 import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import com.socialized.javascript.data.CredentialDAO._
-import com.socialized.javascript.data.{CredentialDAO, CredentialData, SessionDAO, UserDAO}
 import com.socialized.javascript.data.SessionDAO._
 import com.socialized.javascript.data.UserDAO._
+import com.socialized.javascript.data.{CredentialDAO, CredentialData, SessionDAO, UserDAO}
 import com.socialized.javascript.models.{Session, User}
 
 import scala.concurrent.{ExecutionContext, Future}
@@ -22,7 +22,7 @@ import scala.util.{Failure, Success}
   */
 object AuthenticationRoutes {
 
-  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext, require: Require, mongo: MongoDB) = {
+  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext, require: NodeRequire, mongo: MongoDB) = {
     val credentialDAO = dbFuture.flatMap(_.getCredentialDAO)
     val sessionDAO = dbFuture.flatMap(_.getSessionDAO)
     val userDAO = dbFuture.flatMap(_.getUserDAO)

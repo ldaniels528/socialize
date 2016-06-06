@@ -1,6 +1,6 @@
 package com.socialized.javascript.routes
 
-import com.github.ldaniels528.meansjs.nodejs.Require
+import com.github.ldaniels528.meansjs.nodejs.NodeRequire
 import com.github.ldaniels528.meansjs.nodejs.express.{Application, Request, Response}
 import com.github.ldaniels528.meansjs.nodejs.mongodb._
 import com.github.ldaniels528.meansjs.nodejs.request.{Request => RequestClient}
@@ -20,7 +20,7 @@ import scala.util.{Failure, Success}
   */
 object UserRoutes {
 
-  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext, mongo: MongoDB, require: Require) = {
+  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext, mongo: MongoDB, require: NodeRequire) = {
     implicit val userDAO = dbFuture.flatMap(_.getUserDAO)
     implicit val client = require[RequestClient]("request")
 
