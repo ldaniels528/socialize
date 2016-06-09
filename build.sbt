@@ -5,7 +5,7 @@ import sbt.Project.projectToRef
 import sbt._
 
 val appVersion = "0.8.25"
-val meanjsVersion = "0.1.13"
+val meanjsVersion = "0.1.14"
 
 val _scalaVersion = "2.11.8"
 val akkaVersion = "2.4.4"
@@ -94,7 +94,7 @@ lazy val nodejs = (project in file("app-nodejs"))
       (compile in Compile) dependsOn (fastOptJS in(angularjs, Compile)),
     ivyScala := ivyScala.value map (_.copy(overrideScalaVersion = true)),
     libraryDependencies ++= Seq(
-      "com.github.ldaniels528" %%% "means-node-core" % meanjsVersion,
+      "com.github.ldaniels528" %%% "means-node-global" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-node-bcrypt" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-node-body-parser" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-node-elgs-splitargs" % meanjsVersion,
@@ -102,7 +102,6 @@ lazy val nodejs = (project in file("app-nodejs"))
       "com.github.ldaniels528" %%% "means-node-express-fileupload" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-node-express-ws" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-node-mongodb" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-node-multer" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-node-os" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-node-request" % meanjsVersion
     )

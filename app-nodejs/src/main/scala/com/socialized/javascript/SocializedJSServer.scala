@@ -5,6 +5,7 @@ import com.github.ldaniels528.meansjs.nodejs.bodyparser._
 import com.github.ldaniels528.meansjs.nodejs.express.fileupload.FileUpload
 import com.github.ldaniels528.meansjs.nodejs.express.{Express, Request, Response}
 import com.github.ldaniels528.meansjs.nodejs.expressws.{ExpressWS, WsRouterExtensions}
+import com.github.ldaniels528.meansjs.nodejs.global._
 import com.github.ldaniels528.meansjs.nodejs.mongodb.MongoDB
 import com.socialized.javascript.routes._
 
