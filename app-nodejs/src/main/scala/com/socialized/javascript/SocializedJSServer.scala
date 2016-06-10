@@ -20,7 +20,7 @@ import scala.scalajs.js.annotation.JSExportAll
 @JSExportAll
 object SocializedJSServer extends js.JSApp {
 
-  def main() = {}
+  override def main() = {}
 
   def startServer(implicit bootstrap: Bootstrap) {
     implicit val require = bootstrap.require

@@ -43,8 +43,6 @@ val jsCommonSettings = Seq(
   homepage := Some(url("https://github.com/ldaniels528/socialized")),
   addCompilerPlugin("org.scalamacros" % "paradise" % paradisePluginVersion cross CrossVersion.full),
   libraryDependencies ++= Seq(
-    "com.github.ldaniels528" %%% "means-core" % meanjsVersion,
-    //
     "be.doeraene" %%% "scalajs-jquery" % scalaJsJQueryVersion,
     "org.scala-js" %%% "scalajs-dom" % scalaJsDomVersion,
     "org.scala-lang" % "scala-reflect" % _scalaVersion
@@ -61,18 +59,14 @@ lazy val angularjs = (project in file("app-angularjs"))
     organization := "com.github.ldaniels528",
     version := appVersion,
     libraryDependencies ++= Seq(
-      "com.github.ldaniels528" %%% "means-core-browser" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-angularjs-core" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-angularjs-animate" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-angularjs-cookies" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-angularjs-facebook" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-angularjs-nervgh-fileupload" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-angularjs-sanitize" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-angularjs-toaster" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-angularjs-ui-bootstrap" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-angularjs-ui-router" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-social-facebook" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-social-linkedin" % meanjsVersion
+      "com.github.ldaniels528" %%% "means-angularjs-ui-router" % meanjsVersion
     )
   )
 
@@ -94,15 +88,9 @@ lazy val nodejs = (project in file("app-nodejs"))
       (compile in Compile) dependsOn (fastOptJS in(angularjs, Compile)),
     ivyScala := ivyScala.value map (_.copy(overrideScalaVersion = true)),
     libraryDependencies ++= Seq(
-      "com.github.ldaniels528" %%% "means-node-global" % meanjsVersion,
+      "com.github.ldaniels528" %%% "means-bundle-mean-minimal" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-node-bcrypt" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-node-body-parser" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-node-elgs-splitargs" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-node-express" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-node-express-fileupload" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-node-express-ws" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-node-mongodb" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-node-os" % meanjsVersion,
       "com.github.ldaniels528" %%% "means-node-request" % meanjsVersion
     )
   )
@@ -164,7 +152,10 @@ lazy val shared = (project in file("app-shared"))
   .settings(
     name := "socialized-commonjs",
     organization := "com.github.ldaniels528",
-    version := appVersion
+    version := appVersion,
+    libraryDependencies ++= Seq(
+      "com.github.ldaniels528" %%% "means-core" % meanjsVersion
+    )
   )
 
 
