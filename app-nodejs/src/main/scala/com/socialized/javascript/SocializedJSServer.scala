@@ -42,7 +42,7 @@ object SocializedJSServer extends js.JSApp {
     console.log("Setting up body parsers...")
     val bodyParser = require[BodyParser]("body-parser")
     app.use(bodyParser.json())
-    app.use(bodyParser.urlencoded(UrlEncodedBodyOptions(extended = true)))
+    app.use(bodyParser.urlencoded(new UrlEncodedBodyOptions(extended = true)))
 
     // setup the routes for serving static files
     console.log("Setting up the routes for serving static files...")

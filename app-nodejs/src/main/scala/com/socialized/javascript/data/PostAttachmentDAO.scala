@@ -26,7 +26,7 @@ object PostAttachmentDAO {
   implicit class PostAttachmentDAOExtensions(val db: Db) extends AnyVal {
 
     def getPostAttachmentDAO(implicit ec: ExecutionContext, mongo: MongoDB) = {
-      mongo.GridFSBucket(db, GridFSOptions(bucketName = "post_attachments")).asInstanceOf[PostAttachmentDAO]
+      mongo.GridFSBucket(db, new GridFSOptions(bucketName = "post_attachments")).asInstanceOf[PostAttachmentDAO]
     }
 
   }

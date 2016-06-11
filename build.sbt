@@ -5,7 +5,7 @@ import sbt.Project.projectToRef
 import sbt._
 
 val appVersion = "0.8.25"
-val meanjsVersion = "0.1.14"
+val meanjsVersion = "0.1.15"
 
 val _scalaVersion = "2.11.8"
 val akkaVersion = "2.4.4"
