@@ -1,6 +1,6 @@
 package com.socialized.javascript.util
 
-import com.github.ldaniels528.meansjs.core.browser.encodeURI
+import org.scalajs.dom.browser.encodeURI
 
 /**
   * Query Helper

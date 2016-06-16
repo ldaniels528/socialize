@@ -1,7 +1,7 @@
 package com.socialized.javascript.routes
 
-import com.github.ldaniels528.meansjs.nodejs.express.{Application, Request, Response}
-import com.github.ldaniels528.meansjs.nodejs.mongodb._
+import org.scalajs.nodejs.express.{Application, Request, Response}
+import org.scalajs.nodejs.mongodb._
 import com.socialized.javascript.data.SessionDAO
 import com.socialized.javascript.data.SessionDAO._
 import com.socialized.javascript.forms.MaxResultsForm

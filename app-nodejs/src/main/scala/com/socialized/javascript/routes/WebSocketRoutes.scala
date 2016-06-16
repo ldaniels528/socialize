@@ -1,9 +1,9 @@
 package com.socialized.javascript.routes
 
-import com.github.ldaniels528.meansjs.nodejs.mongodb.{Db, MongoDB}
-import com.github.ldaniels528.meansjs.nodejs.console
-import com.github.ldaniels528.meansjs.nodejs.express.{Application, Request}
-import com.github.ldaniels528.meansjs.nodejs.expressws.{WS, WsInstance, WsRouting}
+import org.scalajs.nodejs.mongodb.{Db, MongoDB}
+import org.scalajs.nodejs.console
+import org.scalajs.nodejs.express.{Application, Request}
+import org.scalajs.nodejs.expressws.{WS, WsInstance, WsRouting}
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.scalajs.js

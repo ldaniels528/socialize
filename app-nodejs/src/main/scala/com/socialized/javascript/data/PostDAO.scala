@@ -1,6 +1,6 @@
 package com.socialized.javascript.data
 
-import com.github.ldaniels528.meansjs.nodejs.mongodb.{Collection, Db}
+import org.scalajs.nodejs.mongodb.{Collection, Db}
 
 import scala.concurrent.ExecutionContext
 import scala.scalajs.js

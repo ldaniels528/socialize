@@ -1,8 +1,8 @@
 package com.socialized.javascript.services
 
-import com.github.ldaniels528.meansjs.angularjs.Service
-import com.github.ldaniels528.meansjs.angularjs.http.Http
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.angularjs.Service
+import org.scalajs.angularjs.http.Http
+import org.scalajs.nodejs.util.ScalaJsHelper._
 import com.socialized.javascript.forms.SignUpForm
 import com.socialized.javascript.models.Session
 

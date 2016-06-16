@@ -1,7 +1,7 @@
 package com.socialized.javascript.controllers
 
-import com.github.ldaniels528.meansjs.angularjs.AngularJsHelper._
-import com.github.ldaniels528.meansjs.angularjs.{Controller, Q, Scope}
+import org.scalajs.angularjs.AngularJsHelper._
+import org.scalajs.angularjs.{Controller, Q, Scope}
 import com.socialized.javascript.models.EntitySearchResult
 import com.socialized.javascript.services.ReactiveSearchService
 

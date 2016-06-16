@@ -1,13 +1,13 @@
 package com.socialized.javascript.controllers
 
-import com.github.ldaniels528.meansjs.angularjs.AngularJsHelper._
-import com.github.ldaniels528.meansjs.angularjs.{Location, Timeout}
-import com.github.ldaniels528.meansjs.angularjs.toaster.Toaster
-import com.github.ldaniels528.meansjs.angularjs.{Controller, Scope, injected}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.angularjs.AngularJsHelper._
+import org.scalajs.angularjs.{Location, Timeout}
+import org.scalajs.angularjs.toaster.Toaster
+import org.scalajs.angularjs.{Controller, Scope, injected}
+import org.scalajs.nodejs.util.ScalaJsHelper._
 import com.socialized.javascript.forms.SignUpForm
 import com.socialized.javascript.services.{MySessionService, SignUpService}
-import com.github.ldaniels528.meansjs.core.browser.console
+import org.scalajs.dom.browser.console
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js

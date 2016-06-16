@@ -1,13 +1,13 @@
 package com.socialized.javascript
 
-import com.github.ldaniels528.meansjs.nodejs._
-import com.github.ldaniels528.meansjs.nodejs.bodyparser._
-import com.github.ldaniels528.meansjs.nodejs.express.fileupload.FileUpload
-import com.github.ldaniels528.meansjs.nodejs.express.{Express, Request, Response}
-import com.github.ldaniels528.meansjs.nodejs.expressws.{ExpressWS, WsRouterExtensions}
-import com.github.ldaniels528.meansjs.nodejs.global._
-import com.github.ldaniels528.meansjs.nodejs.mongodb.MongoDB
 import com.socialized.javascript.routes._
+import org.scalajs.nodejs._
+import org.scalajs.nodejs.bodyparser._
+import org.scalajs.nodejs.express.fileupload.ExpressFileUpload
+import org.scalajs.nodejs.express.{Express, Request, Response}
+import org.scalajs.nodejs.expressws.{ExpressWS, WsRouterExtensions}
+import org.scalajs.nodejs.global._
+import org.scalajs.nodejs.mongodb.MongoDB
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
@@ -33,7 +33,7 @@ object SocializedJSServer extends js.JSApp {
     implicit val express = require[Express]("express")
     implicit val app = express().withWsRouting
     implicit val wss = require[ExpressWS]("express-ws")(app)
-    implicit val fileUpload = require[FileUpload]("express-fileupload")
+    implicit val fileUpload = require[ExpressFileUpload]("express-fileupload")
 
     console.log("Loading MongoDB module...")
     implicit val mongodb = require[MongoDB]("mongodb")

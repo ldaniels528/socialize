@@ -1,9 +1,9 @@
 package com.socialized.javascript.routes
 
-import com.github.ldaniels528.meansjs.nodejs.request.Request
-import com.github.ldaniels528.meansjs.nodejs.splitargs.SplitArgs
-import com.github.ldaniels528.meansjs.nodejs.{NodeRequire, console}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.nodejs.request.Request
+import org.scalajs.nodejs.splitargs.SplitArgs
+import org.scalajs.nodejs.{NodeRequire, console}
+import org.scalajs.nodejs.util.ScalaJsHelper._
 import com.socialized.javascript.StringHelper._
 
 import scala.concurrent.{ExecutionContext, Future}

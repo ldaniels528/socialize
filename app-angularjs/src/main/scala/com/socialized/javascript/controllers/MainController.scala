@@ -1,14 +1,14 @@
 package com.socialized.javascript.controllers
 
-import com.github.ldaniels528.meansjs.angularjs.AngularJsHelper._
-import com.github.ldaniels528.meansjs.angularjs._
-import com.github.ldaniels528.meansjs.angularjs.toaster.Toaster
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.angularjs.AngularJsHelper._
+import org.scalajs.angularjs._
+import org.scalajs.angularjs.toaster.Toaster
+import org.scalajs.nodejs.util.ScalaJsHelper._
 import com.socialized.javascript.models._
 import com.socialized.javascript.services._
 import com.socialized.javascript.ui.MainTab
 import org.scalajs.dom
-import com.github.ldaniels528.meansjs.core.browser.console
+import org.scalajs.dom.browser.console
 
 import scala.annotation.tailrec
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue

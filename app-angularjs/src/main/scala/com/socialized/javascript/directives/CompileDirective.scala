@@ -1,7 +1,7 @@
 package com.socialized.javascript.directives
 
-import com.github.ldaniels528.meansjs.angularjs.{Attributes, Compile}
-import com.github.ldaniels528.meansjs.angularjs.{Directive, JQLite, Scope}
+import org.scalajs.angularjs.{Attributes, Compile}
+import org.scalajs.angularjs.{Directive, JQLite, Scope}
 
 import scala.scalajs.js
 

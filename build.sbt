@@ -5,7 +5,7 @@ import sbt.Project.projectToRef
 import sbt._
 
 val appVersion = "0.8.25"
-val meanjsVersion = "0.1.15"
+val meanjsVersion = "0.2.0"
 
 val _scalaVersion = "2.11.8"
 val akkaVersion = "2.4.4"
@@ -59,14 +59,14 @@ lazy val angularjs = (project in file("app-angularjs"))
     organization := "com.github.ldaniels528",
     version := appVersion,
     libraryDependencies ++= Seq(
-      "com.github.ldaniels528" %%% "means-angularjs-core" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-angularjs-animate" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-angularjs-cookies" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-angularjs-nervgh-fileupload" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-angularjs-sanitize" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-angularjs-toaster" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-angularjs-ui-bootstrap" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-angularjs-ui-router" % meanjsVersion
+      "com.github.ldaniels528" %%% "scalajs-angularjs-core" % meanjsVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-animate" % meanjsVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-cookies" % meanjsVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-nervgh-fileupload" % meanjsVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-sanitize" % meanjsVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-toaster" % meanjsVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-ui-bootstrap" % meanjsVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-ui-router" % meanjsVersion
     )
   )
 
@@ -88,10 +88,10 @@ lazy val nodejs = (project in file("app-nodejs"))
       (compile in Compile) dependsOn (fastOptJS in(angularjs, Compile)),
     ivyScala := ivyScala.value map (_.copy(overrideScalaVersion = true)),
     libraryDependencies ++= Seq(
-      "com.github.ldaniels528" %%% "means-bundle-mean-minimal" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-node-bcrypt" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-node-elgs-splitargs" % meanjsVersion,
-      "com.github.ldaniels528" %%% "means-node-request" % meanjsVersion
+      "com.github.ldaniels528" %%% "scalajs-nodejs-mean-bundle-minimal" % meanjsVersion,
+      "com.github.ldaniels528" %%% "scalajs-nodejs-bcrypt" % meanjsVersion,
+      "com.github.ldaniels528" %%% "scalajs-nodejs-elgs-splitargs" % meanjsVersion,
+      "com.github.ldaniels528" %%% "scalajs-nodejs-request" % meanjsVersion
     )
   )
 
@@ -154,10 +154,9 @@ lazy val shared = (project in file("app-shared"))
     organization := "com.github.ldaniels528",
     version := appVersion,
     libraryDependencies ++= Seq(
-      "com.github.ldaniels528" %%% "means-core" % meanjsVersion
+      "com.github.ldaniels528" %%% "scalajs-common" % meanjsVersion
     )
   )
-
 
 // loads the jvm project at sbt startup
 onLoad in Global := (Command.process("project root", _: State)) compose (onLoad in Global).value

@@ -1,7 +1,7 @@
 package com.socialized.javascript.data
 
-import com.github.ldaniels528.meansjs.nodejs.mongodb.{MongoDB, ObjectID}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.nodejs.mongodb.{MongoDB, ObjectID}
+import org.scalajs.nodejs.util.ScalaJsHelper._
 import com.socialized.javascript.models._
 
 import scala.scalajs.js

@@ -1,7 +1,7 @@
 package com.socialized.javascript.data
 
-import com.github.ldaniels528.meansjs.nodejs.mongodb.gridfs.{GridFSBucket, GridFSOptions}
-import com.github.ldaniels528.meansjs.nodejs.mongodb.{Db, MongoDB}
+import org.scalajs.nodejs.mongodb.gridfs.{GridFSBucket, GridFSOptions}
+import org.scalajs.nodejs.mongodb.{Db, MongoDB}
 
 import scala.concurrent.ExecutionContext
 import scala.scalajs.js

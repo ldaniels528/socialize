@@ -1,13 +1,13 @@
 package com.socialized.javascript.services
 
-import com.github.ldaniels528.meansjs.angularjs.AngularJsHelper._
-import com.github.ldaniels528.meansjs.angularjs._
-import com.github.ldaniels528.meansjs.angularjs.cookies.Cookies
-import com.github.ldaniels528.meansjs.angularjs.toaster._
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import com.socialized.javascript.models.{Session, User, UserLike}
 import com.socialized.javascript.services.MySessionService.{INITIAL_GRACE_PERIOD, SESSION_COOKIE_NAME}
-import com.github.ldaniels528.meansjs.core.browser.console
+import org.scalajs.angularjs.AngularJsHelper._
+import org.scalajs.angularjs._
+import org.scalajs.angularjs.cookies.Cookies
+import org.scalajs.angularjs.toaster._
+import org.scalajs.dom.browser.console
+import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.concurrent.duration._
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
@@ -132,7 +132,7 @@ class MySessionService($rootScope: Scope, $cookies: Cookies, $location: Location
     * Loads the session and user
     */
   private def loadSessionAndUser() {
-    $cookies.getAsOpt[String](SESSION_COOKIE_NAME).toOption match {
+    $cookies.get[String](SESSION_COOKIE_NAME).toOption match {
       case Some(sessionId) =>
         console.log(s"Attempting to load user session $sessionId...")
         val outcome = for {

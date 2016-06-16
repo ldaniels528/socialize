@@ -1,15 +1,15 @@
 package com.socialized.javascript.controllers
 
-import com.github.ldaniels528.meansjs.angularjs.AngularJsHelper._
-import com.github.ldaniels528.meansjs.angularjs.Timeout
-import com.github.ldaniels528.meansjs.angularjs._
-import com.github.ldaniels528.meansjs.angularjs.cookies.Cookies
-import com.github.ldaniels528.meansjs.angularjs.toaster.Toaster
-import com.github.ldaniels528.meansjs.angularjs.{Controller, Scope, injected}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.angularjs.AngularJsHelper._
+import org.scalajs.angularjs.Timeout
+import org.scalajs.angularjs._
+import org.scalajs.angularjs.cookies.Cookies
+import org.scalajs.angularjs.toaster.Toaster
+import org.scalajs.angularjs.{Controller, Scope, injected}
+import org.scalajs.nodejs.util.ScalaJsHelper._
 import com.socialized.javascript.models.InboxMessage
 import com.socialized.javascript.services._
-import com.github.ldaniels528.meansjs.core.browser.console
+import org.scalajs.dom.browser.console
 
 import scala.concurrent.duration._
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue

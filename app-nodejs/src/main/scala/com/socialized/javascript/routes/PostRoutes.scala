@@ -1,12 +1,5 @@
 package com.socialized.javascript.routes
 
-import com.github.ldaniels528.meansjs.nodejs
-import com.github.ldaniels528.meansjs.nodejs.NodeRequire
-import com.github.ldaniels528.meansjs.nodejs.express.fileupload.{FileUpload, UploadedFiles}
-import com.github.ldaniels528.meansjs.nodejs.express.{Application, Request, Response}
-import com.github.ldaniels528.meansjs.nodejs.mongodb._
-import com.github.ldaniels528.meansjs.nodejs.mongodb.gridfs.UploadStreamOptions
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
 import com.socialized.javascript.data.PostAttachmentDAO._
 import com.socialized.javascript.data.PostDAO._
 import com.socialized.javascript.data.PostData._
@@ -14,6 +7,13 @@ import com.socialized.javascript.data.UserDAO._
 import com.socialized.javascript.data.{PostAttachmentDAO, PostDAO, UserDAO, UserData}
 import com.socialized.javascript.forms.MaxResultsForm
 import com.socialized.javascript.models.{Attachment, OperationResult, Post}
+import org.scalajs.nodejs
+import org.scalajs.nodejs.NodeRequire
+import org.scalajs.nodejs.express.fileupload.{ExpressFileUpload, UploadedFiles}
+import org.scalajs.nodejs.express.{Application, Request, Response}
+import org.scalajs.nodejs.mongodb._
+import org.scalajs.nodejs.mongodb.gridfs.UploadStreamOptions
+import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.scalajs.js
@@ -25,7 +25,7 @@ import scala.util.{Failure, Success}
   */
 object PostRoutes {
 
-  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext, require: NodeRequire, mongo: MongoDB, fileUpload: FileUpload) = {
+  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext, require: NodeRequire, mongo: MongoDB, fileUpload: ExpressFileUpload) = {
     implicit val postDAO = dbFuture.flatMap(_.getPostDAO)
     implicit val userDAO = dbFuture.flatMap(_.getUserDAO)
     implicit val attachmentDAO = dbFuture.map(_.getPostAttachmentDAO)

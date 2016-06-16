@@ -1,10 +1,10 @@
 package com.socialized.javascript.directives
 
-import com.github.ldaniels528.meansjs.angularjs.Attributes
-import com.github.ldaniels528.meansjs.angularjs.{Directive, JQLite, Scope, angular}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.angularjs.Attributes
+import org.scalajs.angularjs.{Directive, JQLite, Scope, angular}
+import org.scalajs.nodejs.util.ScalaJsHelper._
 import org.scalajs.dom
-import com.github.ldaniels528.meansjs.core.browser.console
+import org.scalajs.dom.browser.console
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSBracketAccess, ScalaJSDefined}

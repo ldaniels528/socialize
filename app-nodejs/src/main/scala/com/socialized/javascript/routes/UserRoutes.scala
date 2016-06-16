@@ -1,10 +1,10 @@
 package com.socialized.javascript.routes
 
-import com.github.ldaniels528.meansjs.nodejs.NodeRequire
-import com.github.ldaniels528.meansjs.nodejs.express.{Application, Request, Response}
-import com.github.ldaniels528.meansjs.nodejs.mongodb._
-import com.github.ldaniels528.meansjs.nodejs.request.{Request => RequestClient}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.nodejs.NodeRequire
+import org.scalajs.nodejs.express.{Application, Request, Response}
+import org.scalajs.nodejs.mongodb._
+import org.scalajs.nodejs.request.{Request => RequestClient}
+import org.scalajs.nodejs.util.ScalaJsHelper._
 import com.socialized.javascript.data.UserDAO._
 import com.socialized.javascript.data.UserData._
 import com.socialized.javascript.data.{UserDAO, UserData}

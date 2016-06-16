@@ -1,16 +1,16 @@
 package com.socialized.javascript.controllers.home
 
-import com.github.ldaniels528.meansjs.angularjs.AngularJsHelper._
-import com.github.ldaniels528.meansjs.angularjs._
-import com.github.ldaniels528.meansjs.angularjs.fileupload.nervgh.{FileItem, FileUploader, FileUploaderConfig}
-import com.github.ldaniels528.meansjs.angularjs.toaster.Toaster
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.angularjs.AngularJsHelper._
+import org.scalajs.angularjs._
+import org.scalajs.angularjs.fileupload.nervgh.{FileItem, FileUploader, FileUploaderConfig}
+import org.scalajs.angularjs.toaster.Toaster
+import org.scalajs.nodejs.util.ScalaJsHelper._
 import com.socialized.javascript.controllers.{GlobalLoadingScope, GlobalNavigationScope}
 import com.socialized.javascript.models._
 import com.socialized.javascript.services._
 import com.socialized.javascript.ui.{Menu, MenuItem}
 import org.scalajs.dom
-import com.github.ldaniels528.meansjs.core.browser.console
+import org.scalajs.dom.browser.console
 
 import scala.concurrent.Future
 import scala.concurrent.duration._

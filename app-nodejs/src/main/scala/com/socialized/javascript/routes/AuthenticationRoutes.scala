@@ -1,10 +1,10 @@
 package com.socialized.javascript.routes
 
-import com.github.ldaniels528.meansjs.nodejs.bcrypt.BCrypt
-import com.github.ldaniels528.meansjs.nodejs.express.{Application, Request, Response}
-import com.github.ldaniels528.meansjs.nodejs.mongodb._
-import com.github.ldaniels528.meansjs.nodejs.{NodeRequire, console}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.nodejs.bcrypt.BCrypt
+import org.scalajs.nodejs.express.{Application, Request, Response}
+import org.scalajs.nodejs.mongodb._
+import org.scalajs.nodejs.{NodeRequire, console}
+import org.scalajs.nodejs.util.ScalaJsHelper._
 import com.socialized.javascript.data.CredentialDAO._
 import com.socialized.javascript.data.SessionDAO._
 import com.socialized.javascript.data.UserDAO._

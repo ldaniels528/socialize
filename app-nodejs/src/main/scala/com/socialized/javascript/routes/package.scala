@@ -1,7 +1,7 @@
 package com.socialized.javascript
 
-import com.github.ldaniels528.meansjs.nodejs.mongodb.{FindAndUpdateOptions, _}
-import com.github.ldaniels528.meansjs.nodejs.express.Response
+import org.scalajs.nodejs.mongodb.{FindAndUpdateOptions, _}
+import org.scalajs.nodejs.express.Response
 
 import scala.concurrent.ExecutionContext
 import scala.scalajs.js

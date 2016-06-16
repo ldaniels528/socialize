@@ -1,9 +1,9 @@
 package com.socialized.javascript.directives
 
-import com.github.ldaniels528.meansjs.angularjs.{Attributes, Compile}
-import com.github.ldaniels528.meansjs.angularjs.sanitize.Sce
-import com.github.ldaniels528.meansjs.angularjs.{Directive, JQLite, Scope}
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.angularjs.{Attributes, Compile}
+import org.scalajs.angularjs.sanitize.Sce
+import org.scalajs.angularjs.{Directive, JQLite, Scope}
+import org.scalajs.nodejs.util.ScalaJsHelper._
 import com.socialized.javascript.directives.CareerTalkDirective.Emoticons
 import com.socialized.javascript.models.Emoticon
 

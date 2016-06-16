@@ -1,7 +1,7 @@
 package com.socialized.javascript.routes
 
-import com.github.ldaniels528.meansjs.nodejs.console
-import com.github.ldaniels528.meansjs.util.ScalaJsHelper._
+import org.scalajs.nodejs.console
+import org.scalajs.nodejs.util.ScalaJsHelper._
 
 import scala.language.implicitConversions
 import scala.scalajs.js

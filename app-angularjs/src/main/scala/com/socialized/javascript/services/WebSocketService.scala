@@ -1,8 +1,8 @@
 package com.socialized.javascript.services
 
-import com.github.ldaniels528.meansjs.angularjs.{Location, Timeout}
-import com.github.ldaniels528.meansjs.angularjs.toaster.Toaster
-import com.github.ldaniels528.meansjs.angularjs.{Scope, Service, angular}
+import org.scalajs.angularjs.{Location, Timeout}
+import org.scalajs.angularjs.toaster.Toaster
+import org.scalajs.angularjs.{Scope, Service, angular}
 import com.socialized.javascript.models.{User, WsEventMessage}
 import org.scalajs.dom.raw.{CloseEvent, ErrorEvent, MessageEvent, WebSocket}
 import org.scalajs.dom.{console, _}
