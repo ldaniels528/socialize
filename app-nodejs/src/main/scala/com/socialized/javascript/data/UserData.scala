@@ -2,9 +2,9 @@ package com.socialized.javascript.data
 
 import java.lang.{Boolean => JBoolean, Double => JDouble}
 
-import org.scalajs.nodejs.mongodb.{MongoDB, ObjectID}
-import org.scalajs.nodejs.util.ScalaJsHelper._
 import com.socialized.javascript.models.{Submitter, User}
+import org.scalajs.nodejs.mongodb.{MongoDB, ObjectID}
+import org.scalajs.sjs.JsUnderOrHelper._
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined

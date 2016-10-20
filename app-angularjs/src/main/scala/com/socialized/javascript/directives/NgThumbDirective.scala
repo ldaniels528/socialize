@@ -1,6 +1,7 @@
 package com.socialized.javascript.directives
 
 import org.scalajs.angularjs.Attributes
+import org.scalajs.angularjs.Directive.{AttributeRestriction, ElementRestriction, LinkSupport, TemplateSupport}
 import org.scalajs.angularjs.{Directive, JQLite, Scope, angular}
 import org.scalajs.nodejs.util.ScalaJsHelper._
 import org.scalajs.dom
@@ -13,9 +14,8 @@ import scala.scalajs.js.annotation.{JSBracketAccess, ScalaJSDefined}
   * NgThumb Directive
   * @author lawrence.daniels@gmail.com
   */
-class NgThumbDirective($window: Window) extends Directive[NgThumbDirectiveScope] {
-
-  override def restrict = "A"
+class NgThumbDirective($window: Window) extends Directive
+  with AttributeRestriction with LinkSupport[NgThumbDirectiveScope] with TemplateSupport {
 
   override def template = "<canvas/>"
 

@@ -1,16 +1,18 @@
 package com.socialized.javascript.controllers.home
 
-import org.scalajs.angularjs.AngularJsHelper._
-import org.scalajs.angularjs._
-import org.scalajs.angularjs.fileupload.nervgh.{FileItem, FileUploader, FileUploaderConfig}
-import org.scalajs.angularjs.toaster.Toaster
-import org.scalajs.nodejs.util.ScalaJsHelper._
 import com.socialized.javascript.controllers.{GlobalLoadingScope, GlobalNavigationScope}
 import com.socialized.javascript.models._
 import com.socialized.javascript.services._
 import com.socialized.javascript.ui.{Menu, MenuItem}
+import org.scalajs.angularjs.AngularJsHelper._
+import org.scalajs.angularjs._
+import org.scalajs.angularjs.fileupload.nervgh.{FileItem, FileUploader, FileUploaderConfig}
+import org.scalajs.angularjs.toaster.Toaster
 import org.scalajs.dom
 import org.scalajs.dom.browser.console
+import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.sjs.JsUnderOrHelper._
+import org.scalajs.sjs.OptionHelper._
 
 import scala.concurrent.Future
 import scala.concurrent.duration._

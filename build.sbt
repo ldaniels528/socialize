@@ -5,7 +5,7 @@ import sbt.Project.projectToRef
 import sbt._
 
 val appVersion = "0.8.25"
-val meanjsVersion = "0.2.0"
+val transcendentVersion = "0.2.3.2"
 
 val _scalaVersion = "2.11.8"
 val akkaVersion = "2.4.4"
@@ -59,14 +59,15 @@ lazy val angularjs = (project in file("app-angularjs"))
     organization := "com.github.ldaniels528",
     version := appVersion,
     libraryDependencies ++= Seq(
-      "com.github.ldaniels528" %%% "scalajs-angularjs-core" % meanjsVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-animate" % meanjsVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-cookies" % meanjsVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-nervgh-fileupload" % meanjsVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-sanitize" % meanjsVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-toaster" % meanjsVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-ui-bootstrap" % meanjsVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-ui-router" % meanjsVersion
+      "com.github.ldaniels528" %%% "scalajs-common" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-core" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-animate" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-cookies" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-nervgh-fileupload" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-sanitize" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-toaster" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-ui-bootstrap" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-angularjs-ui-router" % transcendentVersion
     )
   )
 
@@ -88,10 +89,10 @@ lazy val nodejs = (project in file("app-nodejs"))
       (compile in Compile) dependsOn (fastOptJS in(angularjs, Compile)),
     ivyScala := ivyScala.value map (_.copy(overrideScalaVersion = true)),
     libraryDependencies ++= Seq(
-      "com.github.ldaniels528" %%% "scalajs-nodejs-mean-bundle-minimal" % meanjsVersion,
-      "com.github.ldaniels528" %%% "scalajs-nodejs-bcrypt" % meanjsVersion,
-      "com.github.ldaniels528" %%% "scalajs-nodejs-elgs-splitargs" % meanjsVersion,
-      "com.github.ldaniels528" %%% "scalajs-nodejs-request" % meanjsVersion
+      "com.github.ldaniels528" %%% "scalajs-npm-mean-bundle-minimal" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-npm-bcrypt" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-npm-splitargs" % transcendentVersion,
+      "com.github.ldaniels528" %%% "scalajs-npm-request" % transcendentVersion
     )
   )
 
@@ -154,7 +155,7 @@ lazy val shared = (project in file("app-shared"))
     organization := "com.github.ldaniels528",
     version := appVersion,
     libraryDependencies ++= Seq(
-      "com.github.ldaniels528" %%% "scalajs-common" % meanjsVersion
+      "com.github.ldaniels528" %%% "scalajs-common" % transcendentVersion
     )
   )
 

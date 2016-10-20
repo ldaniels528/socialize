@@ -1,6 +1,7 @@
 package com.socialized.javascript.models
 
 import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.sjs.JsUnderOrHelper._
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined
@@ -62,7 +63,7 @@ class Post(var _id: js.UndefOr[String] = js.undefined,
       _id = _id ?? this._id,
       text = text ?? this.text,
       submitter = submitter ?? this.submitter,
-      submitterId =  submitterId ?? this.submitterId,
+      submitterId = submitterId ?? this.submitterId,
       summary = summary ?? this.summary,
       likes = likes ?? this.likes,
       likedBy = likedBy ?? this.likedBy,

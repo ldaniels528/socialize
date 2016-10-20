@@ -1,8 +1,8 @@
 package com.socialized.javascript.data
 
-import org.scalajs.nodejs.mongodb.{MongoDB, ObjectID}
-import org.scalajs.nodejs.util.ScalaJsHelper._
 import com.socialized.javascript.models._
+import org.scalajs.nodejs.mongodb.{MongoDB, ObjectID}
+import org.scalajs.sjs.JsUnderOrHelper._
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined

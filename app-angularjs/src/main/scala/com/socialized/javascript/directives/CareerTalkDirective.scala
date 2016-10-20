@@ -6,6 +6,7 @@ import org.scalajs.angularjs.{Directive, JQLite, Scope}
 import org.scalajs.nodejs.util.ScalaJsHelper._
 import com.socialized.javascript.directives.CareerTalkDirective.Emoticons
 import com.socialized.javascript.models.Emoticon
+import org.scalajs.angularjs.Directive.{ElementRestriction, LinkSupport, TemplateSupport}
 
 import scala.scalajs.js
 
@@ -14,8 +15,9 @@ import scala.scalajs.js
   * @author lawrence.daniels@gmail.com
   * @example <careertalk text="post.text"></careertalk>
   */
-class CareerTalkDirective($compile: Compile, $sce: Sce) extends Directive[CareerTalkDirectiveScope] {
-  override val restrict = "E"
+class CareerTalkDirective($compile: Compile, $sce: Sce) extends Directive
+with ElementRestriction with LinkSupport[CareerTalkDirectiveScope] with TemplateSupport {
+
   override val scope = js.Dynamic.literal(text = "=", callback = "&")
   override val transclude = true
   override val replace = true

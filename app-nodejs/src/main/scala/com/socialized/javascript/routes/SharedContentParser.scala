@@ -1,10 +1,11 @@
 package com.socialized.javascript.routes
 
+import com.socialized.javascript.StringHelper._
 import org.scalajs.nodejs.request.Request
 import org.scalajs.nodejs.splitargs.SplitArgs
-import org.scalajs.nodejs.{NodeRequire, console}
 import org.scalajs.nodejs.util.ScalaJsHelper._
-import com.socialized.javascript.StringHelper._
+import org.scalajs.nodejs.{NodeRequire, console}
+import org.scalajs.sjs.OptionHelper._
 
 import scala.concurrent.{ExecutionContext, Future}
 

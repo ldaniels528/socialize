@@ -1,14 +1,13 @@
 package com.socialized.javascript.routes
 
-import org.scalajs.nodejs.NodeRequire
-import org.scalajs.nodejs.express.{Application, Request, Response}
-import org.scalajs.nodejs.mongodb._
-import org.scalajs.nodejs.request.{Request => RequestClient}
-import org.scalajs.nodejs.util.ScalaJsHelper._
 import com.socialized.javascript.data.UserDAO._
 import com.socialized.javascript.data.UserData._
 import com.socialized.javascript.data.{UserDAO, UserData}
 import com.socialized.javascript.models.User
+import org.scalajs.nodejs.NodeRequire
+import org.scalajs.nodejs.express.{Application, Request, Response}
+import org.scalajs.nodejs.mongodb._
+import org.scalajs.nodejs.request.{Request => RequestClient}
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.scalajs.js
@@ -57,7 +56,7 @@ object UserRoutes {
   def createUser(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, userDAO: Future[UserDAO]) = {
     request.bodyAs[User].toData match {
       case Success(user) =>
-        userDAO.flatMap(_.insert(user)) onComplete {
+        userDAO.flatMap(_.insert(user).toFuture) onComplete {
           case Success(result) if result.isOk => response.send(result.ops.headOption.orNull); next()
           case Success(result) => response.badRequest("Post could not be created"); next()
           case Failure(e) => response.internalServerError(e); next()

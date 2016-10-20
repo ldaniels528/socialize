@@ -1,7 +1,7 @@
 package com.socialized.javascript.directives
 
-import org.scalajs.angularjs.{Attributes, Compile}
-import org.scalajs.angularjs.{Directive, JQLite, Scope}
+import org.scalajs.angularjs.Directive.LinkSupport
+import org.scalajs.angularjs.{Attributes, Compile, Directive, JQLite, Scope}
 
 import scala.scalajs.js
 
@@ -9,8 +9,7 @@ import scala.scalajs.js
   * Compile Directive
   * @author lawrence.daniels@gmail.com
   */
-class CompileDirective($compile: Compile) extends Directive[CompileDirectiveScope] {
-  override val template = """"""
+class CompileDirective($compile: Compile) extends Directive with LinkSupport[CompileDirectiveScope] {
 
   override def link(scope: CompileDirectiveScope, element: JQLite, attrs: Attributes) = {
     scope.$watch(

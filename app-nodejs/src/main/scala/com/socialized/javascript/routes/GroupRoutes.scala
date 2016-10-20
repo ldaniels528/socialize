@@ -1,12 +1,12 @@
 package com.socialized.javascript.routes
 
-import org.scalajs.nodejs.express.{Application, Request, Response}
-import org.scalajs.nodejs.mongodb._
-import org.scalajs.nodejs.util.ScalaJsHelper._
 import com.socialized.javascript.data.GroupDAO
 import com.socialized.javascript.data.GroupDAO._
 import com.socialized.javascript.forms.MaxResultsForm
 import com.socialized.javascript.models.Group
+import org.scalajs.nodejs.express.{Application, Request, Response}
+import org.scalajs.nodejs.mongodb._
+import org.scalajs.sjs.JsUnderOrHelper._
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.language.postfixOps

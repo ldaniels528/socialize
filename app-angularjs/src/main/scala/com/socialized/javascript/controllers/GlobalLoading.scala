@@ -1,7 +1,7 @@
 package com.socialized.javascript.controllers
 
 import org.scalajs.angularjs.{Controller, Scope, Timeout}
-import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.sjs.JsUnderOrHelper._
 
 import scala.scalajs.js
 

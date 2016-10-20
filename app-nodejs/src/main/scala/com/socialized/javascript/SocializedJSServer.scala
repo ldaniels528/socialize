@@ -6,7 +6,7 @@ import org.scalajs.nodejs.bodyparser._
 import org.scalajs.nodejs.express.fileupload.ExpressFileUpload
 import org.scalajs.nodejs.express.{Express, Request, Response}
 import org.scalajs.nodejs.expressws.{ExpressWS, WsRouterExtensions}
-import org.scalajs.nodejs.global._
+import org.scalajs.nodejs.globals.process
 import org.scalajs.nodejs.mongodb.MongoDB
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue

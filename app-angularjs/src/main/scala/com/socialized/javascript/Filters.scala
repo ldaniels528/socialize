@@ -2,7 +2,7 @@ package com.socialized.javascript
 
 import org.scalajs.angularjs.angular
 import org.scalajs.dom.browser.console
-import org.scalajs.nodejs.util.ScalaJsHelper._
+import org.scalajs.sjs.JsUnderOrHelper._
 
 import scala.language.postfixOps
 import scala.scalajs.js

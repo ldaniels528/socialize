@@ -1,7 +1,7 @@
 package com.socialized.javascript
 
-import org.scalajs.nodejs.mongodb.{FindAndUpdateOptions, _}
 import org.scalajs.nodejs.express.Response
+import org.scalajs.nodejs.mongodb.{FindAndUpdateOptions, _}
 
 import scala.concurrent.ExecutionContext
 import scala.scalajs.js
@@ -52,7 +52,7 @@ package object routes {
 
     private def link(entityID: String, userID: String, entitySetName: String, entityQtyName: String)(implicit mongo: MongoDB) = {
       coll.findOneAndUpdate(
-        filter = doc("_id" $eq mongo.ObjectID(entityID), $or(entitySetName $nin userID, entitySetName $exists false)),
+        filter = doc("_id" $eq mongo.ObjectID(entityID), $or(entitySetName $nin js.Array(userID), entitySetName $exists false)),
         update = doc(entitySetName $addToSet userID, entityQtyName $inc 1),
         options = new FindAndUpdateOptions(upsert = false, returnOriginal = false)
       ).toFuture
