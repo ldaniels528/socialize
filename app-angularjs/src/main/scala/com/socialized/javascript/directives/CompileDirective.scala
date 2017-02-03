@@ -1,7 +1,7 @@
 package com.socialized.javascript.directives
 
-import org.scalajs.angularjs.Directive.LinkSupport
-import org.scalajs.angularjs.{Attributes, Compile, Directive, JQLite, Scope}
+import io.scalajs.npm.angularjs.Directive.LinkSupport
+import io.scalajs.npm.angularjs.{Attributes, Compile, Directive, JQLite, Scope}
 
 import scala.scalajs.js
 

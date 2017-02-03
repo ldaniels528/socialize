@@ -4,10 +4,9 @@ import com.socialized.javascript.data.UserDAO._
 import com.socialized.javascript.data.UserData._
 import com.socialized.javascript.data.{UserDAO, UserData}
 import com.socialized.javascript.models.User
-import org.scalajs.nodejs.NodeRequire
-import org.scalajs.nodejs.express.{Application, Request, Response}
-import org.scalajs.nodejs.mongodb._
-import org.scalajs.nodejs.request.{Request => RequestClient}
+import io.scalajs.npm.express.{Application, Request, Response}
+import io.scalajs.npm.mongodb._
+import io.scalajs.npm.request.{Request => RequestClient}
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.scalajs.js
@@ -19,9 +18,8 @@ import scala.util.{Failure, Success}
   */
 object UserRoutes {
 
-  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext, mongo: MongoDB, require: NodeRequire) = {
+  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext) {
     implicit val userDAO = dbFuture.flatMap(_.getUserDAO)
-    implicit val client = require[RequestClient]("request")
 
     // User CRUD
     app.post("/api/user", (request: Request, response: Response, next: NextFunction) => createUser(request, response, next))
@@ -53,7 +51,7 @@ object UserRoutes {
     * Creates a new user
     * @example POST /api/user [User in body]
     */
-  def createUser(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, userDAO: Future[UserDAO]) = {
+  def createUser(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, userDAO: Future[UserDAO]) = {
     request.bodyAs[User].toData match {
       case Success(user) =>
         userDAO.flatMap(_.insert(user).toFuture) onComplete {
@@ -69,8 +67,8 @@ object UserRoutes {
     * Retrieve a user by ID
     * @example GET /api/user/5633c756d9d5baa77a714803
     */
-  def getUserByID(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, userDAO: Future[UserDAO]) = {
-    val userID = request.params("userID")
+  def getUserByID(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, userDAO: Future[UserDAO]) = {
+    val userID = request.params.apply("userID")
     userDAO.flatMap(_.findById[User](userID)) onComplete {
       case Success(Some(user)) => response.send(user); next()
       case Success(None) => response.notFound(); next()
@@ -82,7 +80,7 @@ object UserRoutes {
     * Retrieve a user by email address
     * @example GET /api/user/email?email=some.one@somewhere.com
     */
-  def getUserByEmail(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, userDAO: Future[UserDAO]) = {
+  def getUserByEmail(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, userDAO: Future[UserDAO]) = {
     request.query.get("primaryEmail") match {
       case Some(primaryEmail) =>
         userDAO.flatMap(_.findOneFuture[User]("primaryEmail" $eq primaryEmail)) onComplete {
@@ -98,7 +96,7 @@ object UserRoutes {
     * Retrieve a user by username
     * @example GET /api/user/name?username=ldaniels528
     */
-  def getUserByUsername(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, userDAO: Future[UserDAO]) = {
+  def getUserByUsername(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, userDAO: Future[UserDAO]) = {
     request.query.get("username") match {
       case Some(username) =>
         userDAO.flatMap(_.findOneFuture[User]("screenName" $eq username)) onComplete {
@@ -114,8 +112,8 @@ object UserRoutes {
     * Update a user by ID
     * @example GET /api/user/5633c756d9d5baa77a714803
     */
-  def updateUser(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, userDAO: Future[UserDAO]) = {
-    val userID = request.params("userID")
+  def updateUser(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, userDAO: Future[UserDAO]) = {
+    val userID = request.params.apply("userID")
     request.bodyAs[User].toData match {
       case Success(user) =>
         userDAO.flatMap(_.findById[User](userID)) onComplete {
@@ -135,17 +133,17 @@ object UserRoutes {
     * Retrieves a user's avatar by ID
     * @example GET /api/user/5633c756d9d5baa77a714803/avatar
     */
-  def getAvatarByID(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, userDAO: Future[UserDAO], client: RequestClient) = {
-    val (userID, host) = (request.params("userID"), request.headers("host"))
+  def getAvatarByID(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, userDAO: Future[UserDAO]) = {
+    val (userID, host) = (request.params.apply("userID"), request.headers.apply("host"))
     userDAO.flatMap(_.findById[User](userID)) onComplete {
       case Success(Some(user)) =>
         val avatarId = user.avatarId.toOption
         val avatarURL = user.avatarURL.toOption
         avatarURL match {
-          case Some(url) => client.get(url).pipe(response).onEnd(() => next())
-          case None => client.get(s"http://$host/images/avatars/anonymous.png").pipe(response).onEnd(() => next())
+          case Some(url) => RequestClient.get(url).pipe(response).onEnd(() => next())
+          case None => RequestClient.get(s"http://$host/images/avatars/anonymous.png").pipe(response).onEnd(() => next())
         }
-      case Success(None) => client.get(s"http://$host/images/avatars/anonymous.png").pipe(response).onEnd(() => next())
+      case Success(None) => RequestClient.get(s"http://$host/images/avatars/anonymous.png").pipe(response).onEnd(() => next())
       case Failure(e) => response.internalServerError(e); next()
     }
   }
@@ -154,8 +152,8 @@ object UserRoutes {
     * Retrieve a submitter by ID
     * @example GET /api/user/5633c756d9d5baa77a714803/submitter
     */
-  def getSubmitter(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, userDAO: Future[UserDAO]) = {
-    val userID = request.params("userID")
+  def getSubmitter(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, userDAO: Future[UserDAO]) = {
+    val userID = request.params.apply("userID")
     userDAO.flatMap(_.findById[UserData](userID, js.Array("avatarURL", "firstName", "lastName"))) onComplete {
       case Success(Some(user)) => response.send(user.toSubmitter); next()
       case Success(None) => response.notFound(userID); next()
@@ -171,8 +169,8 @@ object UserRoutes {
     * Retrieve a user's endorsers by ID
     * @example GET /api/user/5633c756d9d5baa77a714803/endorsers
     */
-  def getEndorsers(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, userDAO: Future[UserDAO]) = {
-    val endorseeID = request.params("endorseeID")
+  def getEndorsers(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, userDAO: Future[UserDAO]) = {
+    val endorseeID = request.params.apply("endorseeID")
     userDAO.flatMap(_.find("likedBy" $in js.Array(endorseeID)).toArrayFuture[User]) onComplete {
       case Success(followers) => response.send(followers); next()
       case Failure(e) => response.internalServerError(e); next()
@@ -183,8 +181,8 @@ object UserRoutes {
     * Like/endorse a user by user ID
     * @example PUT /api/user/5633c756d9d5baa77a714803/like/564047821b591f08aeaa40b4
     */
-  def likeUser(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, userDAO: Future[UserDAO]) = {
-    val (endorseeID, endorserID) = (request.params("endorseeID"), request.params("endorserID"))
+  def likeUser(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, userDAO: Future[UserDAO]) = {
+    val (endorseeID, endorserID) = (request.params.apply("endorseeID"), request.params.apply("endorserID"))
     userDAO.flatMap(_.like(endorseeID, endorserID)) onComplete {
       case Success(result) if result.isOk => response.send(result.value); next()
       case Success(result) => response.badRequest("Endorsement failed"); next()
@@ -196,8 +194,8 @@ object UserRoutes {
     * Retracts the endorsement (UnLike) a user by user ID
     * @example PUT /api/user/5633c756d9d5baa77a714803/like/564047821b591f08aeaa40b4
     */
-  def unlikeUser(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, userDAO: Future[UserDAO]) = {
-    val (endorseeID, endorserID) = (request.params("endorseeID"), request.params("endorserID"))
+  def unlikeUser(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, userDAO: Future[UserDAO]) = {
+    val (endorseeID, endorserID) = (request.params.apply("endorseeID"), request.params.apply("endorserID"))
     userDAO.flatMap(_.unlike(endorseeID, endorserID)) onComplete {
       case Success(result) if result.isOk => response.send(result.value); next()
       case Success(result) => response.badRequest("De-Endorsement failed"); next()
@@ -213,8 +211,8 @@ object UserRoutes {
     * Follow a user by user ID
     * @example PUT /api/user/5633c756d9d5baa77a714803/like/564047821b591f08aeaa40b4
     */
-  def followUser(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, userDAO: Future[UserDAO]) = {
-    val (followeeID, followerID) = (request.params("followeeID"), request.params("followerID"))
+  def followUser(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, userDAO: Future[UserDAO]) = {
+    val (followeeID, followerID) = (request.params.apply("followeeID"), request.params.apply("followerID"))
     userDAO.flatMap(_.follow(followeeID, followerID)) onComplete {
       case Success(result) if result.isOk => response.send(result.value); next()
       case Success(result) => response.badRequest("Start following failed"); next()
@@ -226,8 +224,8 @@ object UserRoutes {
     * Retrieve a user's followers by ID
     * @example GET /api/user/5633c756d9d5baa77a714803/followers
     */
-  def getFollowers(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, userDAO: Future[UserDAO]) = {
-    val followeeID = request.params("followeeID")
+  def getFollowers(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, userDAO: Future[UserDAO]) = {
+    val followeeID = request.params.apply("followeeID")
     userDAO.flatMap(_.find("followers" $in js.Array(followeeID)).toArrayFuture[User]) onComplete {
       case Success(followers) => response.send(followers); next()
       case Failure(e) => response.internalServerError(e); next()
@@ -238,8 +236,8 @@ object UserRoutes {
     * Un-Follow a user by user ID
     * @example PUT /api/user/5633c756d9d5baa77a714803/like/564047821b591f08aeaa40b4
     */
-  def unfollowUser(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, userDAO: Future[UserDAO]) = {
-    val (followeeID, followerID) = (request.params("followeeID"), request.params("followerID"))
+  def unfollowUser(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, userDAO: Future[UserDAO]) = {
+    val (followeeID, followerID) = (request.params.apply("followeeID"), request.params.apply("followerID"))
     userDAO.flatMap(_.unfollow(followeeID, followerID)) onComplete {
       case Success(result) if result.isOk => response.send(result.value); next()
       case Success(result) => response.badRequest("Stop following failed"); next()

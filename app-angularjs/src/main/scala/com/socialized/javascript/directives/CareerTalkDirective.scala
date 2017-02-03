@@ -1,12 +1,12 @@
 package com.socialized.javascript.directives
 
-import org.scalajs.angularjs.{Attributes, Compile}
-import org.scalajs.angularjs.sanitize.Sce
-import org.scalajs.angularjs.{Directive, JQLite, Scope}
-import org.scalajs.nodejs.util.ScalaJsHelper._
+import io.scalajs.npm.angularjs.{Attributes, Compile}
+import io.scalajs.npm.angularjs.sanitize.Sce
+import io.scalajs.npm.angularjs.{Directive, JQLite, Scope}
+import io.scalajs.util.ScalaJsHelper._
 import com.socialized.javascript.directives.CareerTalkDirective.Emoticons
 import com.socialized.javascript.models.Emoticon
-import org.scalajs.angularjs.Directive.{ElementRestriction, LinkSupport, TemplateSupport}
+import io.scalajs.npm.angularjs.Directive.{ElementRestriction, LinkSupport, TemplateSupport}
 
 import scala.scalajs.js
 

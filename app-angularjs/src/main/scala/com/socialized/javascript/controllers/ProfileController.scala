@@ -1,9 +1,9 @@
 package com.socialized.javascript.controllers
 
-import org.scalajs.angularjs.AngularJsHelper._
-import org.scalajs.angularjs._
-import org.scalajs.angularjs.toaster.Toaster
-import org.scalajs.dom.browser.console
+import io.scalajs.npm.angularjs.AngularJsHelper._
+import io.scalajs.npm.angularjs._
+import io.scalajs.npm.angularjs.toaster.Toaster
+import io.scalajs.dom.html.browser.console
 import com.socialized.javascript.controllers.home.SubmitterCacheService
 import com.socialized.javascript.models.{Post, User}
 import com.socialized.javascript.services.{MySessionService, PostService, UserService}

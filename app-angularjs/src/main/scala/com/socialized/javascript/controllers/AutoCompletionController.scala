@@ -1,9 +1,9 @@
 package com.socialized.javascript.controllers
 
-import org.scalajs.angularjs.AngularJsHelper._
-import org.scalajs.angularjs.{Controller, Q, Scope}
 import com.socialized.javascript.models.EntitySearchResult
 import com.socialized.javascript.services.ReactiveSearchService
+import io.scalajs.npm.angularjs.AngularJsHelper._
+import io.scalajs.npm.angularjs.{Controller, Q, Scope}
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js

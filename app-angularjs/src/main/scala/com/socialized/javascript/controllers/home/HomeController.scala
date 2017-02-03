@@ -4,15 +4,15 @@ import com.socialized.javascript.controllers.{GlobalLoadingScope, GlobalNavigati
 import com.socialized.javascript.models._
 import com.socialized.javascript.services._
 import com.socialized.javascript.ui.{Menu, MenuItem}
-import org.scalajs.angularjs.AngularJsHelper._
-import org.scalajs.angularjs._
-import org.scalajs.angularjs.fileupload.nervgh.{FileItem, FileUploader, FileUploaderConfig}
-import org.scalajs.angularjs.toaster.Toaster
-import org.scalajs.dom
-import org.scalajs.dom.browser.console
-import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.sjs.JsUnderOrHelper._
-import org.scalajs.sjs.OptionHelper._
+import io.scalajs.dom
+import io.scalajs.dom.html.browser.console
+import io.scalajs.npm.angularjs.AngularJsHelper._
+import io.scalajs.npm.angularjs._
+import io.scalajs.npm.angularjs.fileupload.nervgh.{FileItem, FileUploader, FileUploaderConfig}
+import io.scalajs.npm.angularjs.toaster.Toaster
+import io.scalajs.util.JsUnderOrHelper._
+import io.scalajs.util.OptionHelper._
+import io.scalajs.util.ScalaJsHelper._
 
 import scala.concurrent.Future
 import scala.concurrent.duration._
@@ -61,7 +61,7 @@ class HomeController($scope: HomeControllerScope, $compile: js.Dynamic, $locatio
   $scope.tags = emptyArray
 
   // initialize the file uploader
-  $scope.uploader = FileUploader(fileUploader, FileUploaderConfig(url = "/api/post/@postID/attachment/@userID"))
+  $scope.uploader = FileUploader(fileUploader, new FileUploaderConfig(url = "/api/post/@postID/attachment/@userID"))
 
   ///////////////////////////////////////////////////////////////////////////
   //      Initialization Functions

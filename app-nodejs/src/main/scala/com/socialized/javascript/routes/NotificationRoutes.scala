@@ -1,7 +1,7 @@
 package com.socialized.javascript.routes
 
-import org.scalajs.nodejs.express.{Application, Request, Response}
-import org.scalajs.nodejs.mongodb._
+import io.scalajs.npm.express.{Application, Request, Response}
+import io.scalajs.npm.mongodb._
 import com.socialized.javascript.data.NotificationDAO
 import com.socialized.javascript.data.NotificationDAO._
 import com.socialized.javascript.forms.MaxResultsForm
@@ -16,7 +16,7 @@ import scala.util.{Failure, Success}
   */
 object NotificationRoutes {
 
-  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext, mongo: MongoDB) = {
+  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext) = {
     implicit val notificationDAO = dbFuture.flatMap(_.getNotificationDAO)
 
     app.get("/api/notifications", (request: Request, response: Response, next: NextFunction) => getNotifications(request, response, next))
@@ -27,7 +27,7 @@ object NotificationRoutes {
     * Retrieve notifications
     * @example GET /api/notifications?maxResults=20
     */
-  def getNotifications(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, notificationDAO: Future[NotificationDAO]) = {
+  def getNotifications(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, notificationDAO: Future[NotificationDAO]) = {
     val maxResults = request.request.queryAs[MaxResultsForm].getMaxResults()
     notificationDAO.flatMap(_.find().limit(maxResults).toArrayFuture[Notification]) onComplete {
       case Success(notifications) => response.send(notifications); next()
@@ -39,7 +39,7 @@ object NotificationRoutes {
     * Retrieve notifications by owner/user
     * @example GET /api/notifications/user/5633c756d9d5baa77a714803/true
     */
-  def getNotificationsByOwner(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, notificationDAO: Future[NotificationDAO]) = {
+  def getNotificationsByOwner(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, notificationDAO: Future[NotificationDAO]) = {
     val ownerID = request.params("ownerID")
     val unread = java.lang.Boolean.valueOf(request.params("unread")).booleanValue()
     notificationDAO.flatMap(_.find("owner._id" $eq ownerID.$oid).toArrayFuture[Notification]) onComplete {

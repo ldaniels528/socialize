@@ -1,19 +1,16 @@
 import org.scalajs.sbtplugin.ScalaJSPlugin
+import org.scalajs.sbtplugin.ScalaJSPlugin.AutoImport.{ModuleKind, scalaJSModuleKind}
 import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
 import sbt.Keys._
 import sbt.Project.projectToRef
 import sbt._
 
 val appVersion = "0.8.25"
-val transcendentVersion = "0.2.3.2"
+val scalaJsIOVersion = "0.3.0.3"
 
 val _scalaVersion = "2.11.8"
 val akkaVersion = "2.4.4"
-val playVersion = "2.4.6"
-
-val paradisePluginVersion = "3.0.0-M1"
-val scalaJsDomVersion = "0.9.0"
-val scalaJsJQueryVersion = "0.9.0"
+val playVersion = "2.4.8"
 
 scalacOptions ++= Seq("-deprecation", "-encoding", "UTF-8", "-feature", "-target:jvm-1.8", "-unchecked",
   "-Ywarn-adapted-args", "-Ywarn-value-discard", "-Xlint")
@@ -22,15 +19,6 @@ javacOptions ++= Seq("-Xlint:deprecation", "-Xlint:unchecked", "-source", "1.8",
 
 val scalaJsOutputDir = Def.settingKey[File]("Directory for Javascript files output by ScalaJS")
 
-lazy val root = (project in file("."))
-  .aggregate(nodejs, playapp)
-  .settings(
-    name := "socialized",
-    organization := "com.github.ldaniels528",
-    version := appVersion,
-    scalaVersion := _scalaVersion
-  )
-
 val jsCommonSettings = Seq(
   scalaVersion := _scalaVersion,
   scalacOptions ++= Seq("-feature", "-deprecation"),
@@ -38,16 +26,21 @@ val jsCommonSettings = Seq(
     "-no-link-warnings" // Suppresses problems with Scaladoc @throws links
   ),
   relativeSourceMaps := true,
-  persistLauncher := true,
-  persistLauncher in Test := false,
   homepage := Some(url("https://github.com/ldaniels528/socialized")),
-  addCompilerPlugin("org.scalamacros" % "paradise" % paradisePluginVersion cross CrossVersion.full),
   libraryDependencies ++= Seq(
-    "be.doeraene" %%% "scalajs-jquery" % scalaJsJQueryVersion,
-    "org.scala-js" %%% "scalajs-dom" % scalaJsDomVersion,
     "org.scala-lang" % "scala-reflect" % _scalaVersion
-  )
-)
+  ))
+
+lazy val shared = (project in file("app-shared"))
+  .enablePlugins(ScalaJSPlugin, ScalaJSPlay)
+  .settings(jsCommonSettings: _*)
+  .settings(
+    name := "socialized-commonjs",
+    organization := "com.github.ldaniels528",
+    version := appVersion,
+    libraryDependencies ++= Seq(
+      "io.scalajs" %%% "core" % scalaJsIOVersion
+    ))
 
 lazy val angularjs = (project in file("app-angularjs"))
   .aggregate(shared)
@@ -58,18 +51,11 @@ lazy val angularjs = (project in file("app-angularjs"))
     name := "socialized-angularjs",
     organization := "com.github.ldaniels528",
     version := appVersion,
+    persistLauncher := true,
+    persistLauncher in Test := false,
     libraryDependencies ++= Seq(
-      "com.github.ldaniels528" %%% "scalajs-common" % transcendentVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-core" % transcendentVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-animate" % transcendentVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-cookies" % transcendentVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-nervgh-fileupload" % transcendentVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-sanitize" % transcendentVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-toaster" % transcendentVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-ui-bootstrap" % transcendentVersion,
-      "com.github.ldaniels528" %%% "scalajs-angularjs-ui-router" % transcendentVersion
-    )
-  )
+      "io.scalajs" %%% "angularjs-bundle" % scalaJsIOVersion
+    ))
 
 lazy val nodejs = (project in file("app-nodejs"))
   .aggregate(angularjs)
@@ -80,21 +66,22 @@ lazy val nodejs = (project in file("app-nodejs"))
     name := "socialized-nodejs",
     organization := "com.github.ldaniels528",
     version := appVersion,
-    pipelineStages := Seq(gzip, scalaJSProd),
+    scalaJSModuleKind := ModuleKind.CommonJSModule,
     relativeSourceMaps := true,
     Seq(packageScalaJSLauncher, fastOptJS, fullOptJS) map { packageJSKey =>
-      crossTarget in(angularjs, Compile, packageJSKey) := baseDirectory.value / "public" / "javascripts"
+      crossTarget in(angularjs, Compile, packageJSKey) := baseDirectory.value / ".." / "public" / "javascripts"
     },
     compile in Compile <<=
       (compile in Compile) dependsOn (fastOptJS in(angularjs, Compile)),
     ivyScala := ivyScala.value map (_.copy(overrideScalaVersion = true)),
     libraryDependencies ++= Seq(
-      "com.github.ldaniels528" %%% "scalajs-npm-mean-bundle-minimal" % transcendentVersion,
-      "com.github.ldaniels528" %%% "scalajs-npm-bcrypt" % transcendentVersion,
-      "com.github.ldaniels528" %%% "scalajs-npm-splitargs" % transcendentVersion,
-      "com.github.ldaniels528" %%% "scalajs-npm-request" % transcendentVersion
-    )
-  )
+      "io.scalajs.npm" %%% "bcrypt" % scalaJsIOVersion,
+      "io.scalajs.npm" %%% "express-fileupload" % scalaJsIOVersion,
+      "io.scalajs.npm" %%% "express-ws" % scalaJsIOVersion,
+      "io.scalajs.npm" %%% "mean-stack-bundle" % scalaJsIOVersion,
+      "io.scalajs.npm" %%% "splitargs" % scalaJsIOVersion,
+      "io.scalajs.npm" %%% "request" % scalaJsIOVersion
+    ))
 
 lazy val playapp = (project in file("app-play"))
   .aggregate(angularjs)
@@ -147,17 +134,5 @@ lazy val playapp = (project in file("app-play"))
       "org.scalatest" %% "scalatest" % "2.2.2" % "test"
     ))
 
-lazy val shared = (project in file("app-shared"))
-  .enablePlugins(ScalaJSPlugin, ScalaJSPlay)
-  .settings(jsCommonSettings: _*)
-  .settings(
-    name := "socialized-commonjs",
-    organization := "com.github.ldaniels528",
-    version := appVersion,
-    libraryDependencies ++= Seq(
-      "com.github.ldaniels528" %%% "scalajs-common" % transcendentVersion
-    )
-  )
-
 // loads the jvm project at sbt startup
-onLoad in Global := (Command.process("project root", _: State)) compose (onLoad in Global).value
+onLoad in Global := (Command.process("project nodejs", _: State)) compose (onLoad in Global).value

@@ -3,8 +3,8 @@ package com.socialized.javascript.data
 import java.lang.{Boolean => JBoolean, Double => JDouble}
 
 import com.socialized.javascript.models.{Submitter, User}
-import org.scalajs.nodejs.mongodb.{MongoDB, ObjectID}
-import org.scalajs.sjs.JsUnderOrHelper._
+import io.scalajs.npm.mongodb.{MongoDB, ObjectID}
+import io.scalajs.util.JsUnderOrHelper._
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined
@@ -45,9 +45,9 @@ object UserData {
     */
   implicit class UserExtensions(val model: User) extends AnyVal {
 
-    def toData(implicit mongo: MongoDB): Try[UserData] = Try {
+    def toData: Try[UserData] = Try {
       new UserData(
-        _id = model._id.map(mongo.ObjectID(_)) ?? mongo.ObjectID(),
+        _id = model._id.map(new ObjectID(_)) ?? new ObjectID(),
         screenName = model.screenName,
         firstName = model.firstName,
         lastName = model.lastName,
@@ -75,7 +75,7 @@ object UserData {
     */
   implicit class UserDataExtensions(val data: UserData) extends AnyVal {
 
-    def fullName = Seq(data.firstName.toOption, data.lastName.toOption).flatten.mkString(" ")
+    def fullName: String = Seq(data.firstName.toOption, data.lastName.toOption).flatten.mkString(" ")
 
     def toModel = new User(
       _id = data._id.map(_.toHexString()),

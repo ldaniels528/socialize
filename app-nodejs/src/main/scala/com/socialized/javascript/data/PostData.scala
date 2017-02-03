@@ -1,8 +1,8 @@
 package com.socialized.javascript.data
 
 import com.socialized.javascript.models._
-import org.scalajs.nodejs.mongodb.{MongoDB, ObjectID}
-import org.scalajs.sjs.JsUnderOrHelper._
+import io.scalajs.npm.mongodb.ObjectID
+import io.scalajs.util.JsUnderOrHelper._
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined
@@ -63,8 +63,8 @@ object PostData {
     */
   implicit class PostExtensions(val post: Post) extends AnyVal {
 
-    def toData(implicit mongo: MongoDB) = new PostData(
-      _id = post._id.map(mongo.ObjectID(_)) ?? mongo.ObjectID(),
+    def toData = new PostData(
+      _id = post._id.map(new ObjectID(_)) ?? new ObjectID(),
       text = post.text,
       submitterId = post.submitterId,
       summary = post.summary,

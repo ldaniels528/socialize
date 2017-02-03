@@ -1,11 +1,10 @@
 package com.socialized.javascript.routes
 
 import com.socialized.javascript.StringHelper._
-import org.scalajs.nodejs.request.Request
-import org.scalajs.nodejs.splitargs.SplitArgs
-import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.nodejs.{NodeRequire, console}
-import org.scalajs.sjs.OptionHelper._
+import io.scalajs.nodejs.console
+import io.scalajs.npm.request.Request
+import io.scalajs.npm.splitargs.SplitArgs
+import io.scalajs.util.OptionHelper._
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -13,13 +12,11 @@ import scala.concurrent.{ExecutionContext, Future}
   * Shared Content Parser
   * @author lawrence.daniels@gmail.com
   */
-class SharedContentParser(require: NodeRequire) {
-  val splitArgs = require[SplitArgs]("splitargs")
-  val request = require[Request]("request")
+class SharedContentParser() {
 
   def parse(url: String)(implicit ec: ExecutionContext): Future[Map[String, String]] = {
     for {
-      (response, body) <- request.getFuture(url) //if response.statusCode == 200
+      (response, body) <- Request.getFuture(url).future //if response.statusCode == 200
 
       dataSet = body.findIndices("<head", "</head>") map {
         case (start, end) => body.substring(start, end - start)
@@ -32,7 +29,7 @@ class SharedContentParser(require: NodeRequire) {
   }
 
   private def mapify(line: String): Map[String, String] = {
-    val mapping = Map(splitArgs(line).toSeq flatMap (_.split("[=]", 2).toSeq match {
+    val mapping = Map(SplitArgs(line).toSeq flatMap (_.split("[=]", 2).toSeq match {
       case Seq(key, value) => Some(key -> value.unquote)
       case values =>
         console.error("missed: %s", values.mkString(", "))

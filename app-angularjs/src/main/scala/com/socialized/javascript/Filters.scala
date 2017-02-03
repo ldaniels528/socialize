@@ -1,8 +1,8 @@
 package com.socialized.javascript
 
-import org.scalajs.angularjs.angular
-import org.scalajs.dom.browser.console
-import org.scalajs.sjs.JsUnderOrHelper._
+import io.scalajs.dom.html.browser.console
+import io.scalajs.npm.angularjs.angular
+import io.scalajs.util.JsUnderOrHelper._
 
 import scala.language.postfixOps
 import scala.scalajs.js

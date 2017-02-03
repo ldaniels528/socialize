@@ -2,12 +2,12 @@ package com.socialized.javascript.services
 
 import com.socialized.javascript.models.{Session, User, UserLike}
 import com.socialized.javascript.services.MySessionService.{INITIAL_GRACE_PERIOD, SESSION_COOKIE_NAME}
-import org.scalajs.angularjs.AngularJsHelper._
-import org.scalajs.angularjs._
-import org.scalajs.angularjs.cookies.Cookies
-import org.scalajs.angularjs.toaster._
-import org.scalajs.dom.browser.console
-import org.scalajs.sjs.JsUnderOrHelper._
+import io.scalajs.npm.angularjs.AngularJsHelper._
+import io.scalajs.npm.angularjs._
+import io.scalajs.npm.angularjs.cookies.Cookies
+import io.scalajs.npm.angularjs.toaster._
+import io.scalajs.dom.html.browser.console
+import io.scalajs.util.JsUnderOrHelper._
 
 import scala.concurrent.duration._
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue

@@ -1,6 +1,6 @@
 package com.socialized.javascript.models
 
-import org.scalajs.nodejs.util.ScalaJsHelper._
+import io.scalajs.util.ScalaJsHelper._
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.ScalaJSDefined

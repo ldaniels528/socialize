@@ -1,7 +1,7 @@
 package com.socialized.javascript.routes
 
-import org.scalajs.nodejs.express.{Application, Request, Response}
-import org.scalajs.nodejs.mongodb._
+import io.scalajs.npm.express.{Application, Request, Response}
+import io.scalajs.npm.mongodb._
 import com.socialized.javascript.data.EventDAO._
 import com.socialized.javascript.data.GroupDAO._
 import com.socialized.javascript.data.UserDAO._
@@ -19,7 +19,7 @@ import scala.util.{Failure, Success}
   */
 object SearchRoutes {
 
-  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext, mongo: MongoDB) = {
+  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext) = {
     implicit val events = dbFuture.flatMap(_.getEventDAO).map(EventSearchAgent(_))
     implicit val groups = dbFuture.flatMap(_.getGroupDAO).map(GroupSearchAgent(_))
     implicit val users = dbFuture.flatMap(_.getUserDAO).map(UserSearchAgent(_))
@@ -32,7 +32,7 @@ object SearchRoutes {
 
   }
 
-  def getSearchResults(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, events: Future[EventSearchAgent], groups: Future[GroupSearchAgent], users: Future[UserSearchAgent]) = {
+  def getSearchResults(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, events: Future[EventSearchAgent], groups: Future[GroupSearchAgent], users: Future[UserSearchAgent]) = {
     val searchAgents = Seq(events, groups, users)
     val form = request.queryAs[SearchForm]
 

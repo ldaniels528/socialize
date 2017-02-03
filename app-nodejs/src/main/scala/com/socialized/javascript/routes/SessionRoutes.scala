@@ -1,7 +1,7 @@
 package com.socialized.javascript.routes
 
-import org.scalajs.nodejs.express.{Application, Request, Response}
-import org.scalajs.nodejs.mongodb._
+import io.scalajs.npm.express.{Application, Request, Response}
+import io.scalajs.npm.mongodb._
 import com.socialized.javascript.data.SessionDAO
 import com.socialized.javascript.data.SessionDAO._
 import com.socialized.javascript.forms.MaxResultsForm
@@ -17,7 +17,7 @@ import scala.util.{Failure, Success}
   */
 object SessionRoutes {
 
-  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext, mongo: MongoDB) = {
+  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext) {
     implicit val sessionDAO = dbFuture.flatMap(_.getSessionDAO)
 
     app.get("/api/session/:sessionID", (request: Request, response: Response, next: NextFunction) => getSessionByID(request, response, next))
@@ -27,8 +27,8 @@ object SessionRoutes {
   /**
     * Retrieve a session by ID
     */
-  def getSessionByID(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, sessionDAO: Future[SessionDAO]) = {
-    val sessionID = request.params("sessionID")
+  def getSessionByID(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, sessionDAO: Future[SessionDAO]) = {
+    val sessionID = request.params.apply("sessionID")
     sessionDAO.flatMap(_.findById[Session](sessionID)) onComplete {
       case Success(Some(session)) => response.send(session); next()
       case Success(None) => response.notFound(); next()
@@ -39,7 +39,7 @@ object SessionRoutes {
   /**
     * Retrieve a sessions by IDs
     */
-  def getSessions(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, sessionDAO: Future[SessionDAO]) = {
+  def getSessions(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, sessionDAO: Future[SessionDAO]) = {
     val form = request.queryAs[UserIdListForm]
     form.userIDs.toOption match {
       case Some(userIDs) =>

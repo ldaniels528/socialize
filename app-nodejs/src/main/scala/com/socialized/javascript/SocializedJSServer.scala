@@ -1,13 +1,12 @@
 package com.socialized.javascript
 
 import com.socialized.javascript.routes._
-import org.scalajs.nodejs._
-import org.scalajs.nodejs.bodyparser._
-import org.scalajs.nodejs.express.fileupload.ExpressFileUpload
-import org.scalajs.nodejs.express.{Express, Request, Response}
-import org.scalajs.nodejs.expressws.{ExpressWS, WsRouterExtensions}
-import org.scalajs.nodejs.globals.process
-import org.scalajs.nodejs.mongodb.MongoDB
+import io.scalajs.nodejs.{process, _}
+import io.scalajs.npm.bodyparser._
+import io.scalajs.npm.express.fileupload.ExpressFileUpload
+import io.scalajs.npm.express.{Express, Request, Response}
+import io.scalajs.npm.expressws._
+import io.scalajs.npm.mongodb.MongoClient
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js
@@ -20,36 +19,26 @@ import scala.scalajs.js.annotation.JSExportAll
 @JSExportAll
 object SocializedJSServer extends js.JSApp {
 
-  override def main() = {}
-
-  def startServer(implicit bootstrap: Bootstrap) {
-    implicit val require = bootstrap.require
-
+  override def main() {
     // determine the port to listen on
     val port = process.env.get("port").map(_.toInt) getOrElse 1337
     val mongoServers = process.env.get("mongo_servers") getOrElse "localhost:27017"
 
     console.log("Loading Express modules...")
-    implicit val express = require[Express]("express")
-    implicit val app = express().withWsRouting
-    implicit val wss = require[ExpressWS]("express-ws")(app)
-    implicit val fileUpload = require[ExpressFileUpload]("express-fileupload")
-
-    console.log("Loading MongoDB module...")
-    implicit val mongodb = require[MongoDB]("mongodb")
+    implicit val app = Express().withWsRouting
+    implicit val wss = ExpressWS(app)
 
     // setup the body parsers
     console.log("Setting up body parsers...")
-    val bodyParser = require[BodyParser]("body-parser")
-    app.use(bodyParser.json())
-    app.use(bodyParser.urlencoded(new UrlEncodedBodyOptions(extended = true)))
+    app.use(BodyParser.json())
+    app.use(BodyParser.urlencoded(new UrlEncodedBodyOptions(extended = true)))
 
     // setup the routes for serving static files
     console.log("Setting up the routes for serving static files...")
-    app.use(fileUpload())
-    app.use(express.static("public"))
-    app.use("/assets", express.static("public"))
-    app.use("/bower_components", express.static("bower_components"))
+    app.use(ExpressFileUpload())
+    app.use(Express.static("public"))
+    app.use("/assets", Express.static("public"))
+    app.use("/bower_components", Express.static("bower_components"))
 
     // disable caching
     app.disable("etag")
@@ -60,14 +49,14 @@ object SocializedJSServer extends js.JSApp {
       next()
       response.onFinish(() => {
         val elapsedTime = System.currentTimeMillis() - startTime
-        console.log("[node] application - %s %s ~> %d [%d ms]", request.method, request.originalUrl, response.statusCode, elapsedTime)
+        console.log(s"[node] application - ${request.method} ${request.originalUrl} ~> ${response.statusCode} [$elapsedTime ms]")
       })
     })
 
     // setup mongodb connection
     val mongoUrl = s"mongodb://$mongoServers/socialized"
     console.log("Connecting to %s", mongoUrl)
-    val dbFuture = mongodb.MongoClient.connectFuture(mongoUrl)
+    val dbFuture = MongoClient.connectFuture(mongoUrl)
 
     // setup searchable entity routes
     EventRoutes.init(app, dbFuture)
@@ -87,7 +76,7 @@ object SocializedJSServer extends js.JSApp {
     SessionRoutes.init(app, dbFuture)
 
     // start the listener
-    app.listen(port, () => console.log("Server now listening on port %d", port))
+    app.listen(port, () => console.log(s"Server now listening on port $port..."))
     ()
   }
 

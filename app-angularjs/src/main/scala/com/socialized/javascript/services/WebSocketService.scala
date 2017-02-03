@@ -1,11 +1,11 @@
 package com.socialized.javascript.services
 
-import org.scalajs.angularjs.{Location, Timeout}
-import org.scalajs.angularjs.toaster.Toaster
-import org.scalajs.angularjs.{Scope, Service, angular}
 import com.socialized.javascript.models.{User, WsEventMessage}
-import org.scalajs.dom.raw.{CloseEvent, ErrorEvent, MessageEvent, WebSocket}
-import org.scalajs.dom.{console, _}
+import io.scalajs.dom.Event
+import io.scalajs.dom.html.browser.console
+import io.scalajs.dom.ws._
+import io.scalajs.npm.angularjs.toaster.Toaster
+import io.scalajs.npm.angularjs.{Location, Scope, Service, Timeout, angular}
 
 import scala.scalajs.js
 import scala.scalajs.js.Dynamic.{global => g}

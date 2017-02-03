@@ -3,13 +3,13 @@ package com.socialized.javascript.controllers
 import com.socialized.javascript.models._
 import com.socialized.javascript.services._
 import com.socialized.javascript.ui.MainTab
-import org.scalajs.angularjs.AngularJsHelper._
-import org.scalajs.angularjs._
-import org.scalajs.angularjs.toaster.Toaster
-import org.scalajs.dom
-import org.scalajs.dom.browser.console
-import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.sjs.JsUnderOrHelper._
+import io.scalajs.dom
+import io.scalajs.dom.html.browser.console
+import io.scalajs.npm.angularjs.AngularJsHelper._
+import io.scalajs.npm.angularjs._
+import io.scalajs.npm.angularjs.toaster.Toaster
+import io.scalajs.util.JsUnderOrHelper._
+import io.scalajs.util.ScalaJsHelper._
 
 import scala.annotation.tailrec
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue

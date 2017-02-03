@@ -1,8 +1,8 @@
 package com.socialized.javascript.services
 
-import org.scalajs.angularjs.Service
-import org.scalajs.angularjs.http.Http
-import org.scalajs.nodejs.util.ScalaJsHelper._
+import io.scalajs.npm.angularjs.Service
+import io.scalajs.npm.angularjs.http.Http
+import io.scalajs.util.ScalaJsHelper._
 import com.socialized.javascript.models.Group
 
 import scala.concurrent.ExecutionContext

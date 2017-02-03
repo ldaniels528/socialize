@@ -1,11 +1,10 @@
 package com.socialized.javascript.directives
 
-import org.scalajs.angularjs.Attributes
-import org.scalajs.angularjs.Directive.{AttributeRestriction, ElementRestriction, LinkSupport, TemplateSupport}
-import org.scalajs.angularjs.{Directive, JQLite, Scope, angular}
-import org.scalajs.nodejs.util.ScalaJsHelper._
-import org.scalajs.dom
-import org.scalajs.dom.browser.console
+import io.scalajs.dom
+import io.scalajs.dom.html.browser.console
+import io.scalajs.npm.angularjs.Directive.{AttributeRestriction, LinkSupport, TemplateSupport}
+import io.scalajs.npm.angularjs.{Attributes, Directive, JQLite, Scope, angular}
+import io.scalajs.util.ScalaJsHelper._
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSBracketAccess, ScalaJSDefined}
@@ -78,7 +77,7 @@ class NgThumbDirectiveHelper extends js.Object {
   */
 object NgThumbDirectiveHelper {
 
-  def apply($window: Window) = {
+  def apply($window: Window): NgThumbDirectiveHelper = {
     console.log("Inside NgThumbDirectiveHelper")
     val helper = new NgThumbDirectiveHelper()
     helper.support = $window.FileReader.nonEmpty && $window.CanvasRenderingContext2D.nonEmpty
@@ -116,7 +115,7 @@ trait FileReader extends js.Object {
 
 object FileReader {
 
-  def apply() = New[FileReader]
+  def apply(): FileReader = New[FileReader]
 
 }
 
@@ -137,7 +136,7 @@ class Image extends js.Object {
 
 object Image {
 
-  def apply() = {
+  def apply(): Image = {
     val image = new Image()
     image
   }

@@ -1,10 +1,10 @@
 package com.socialized.javascript.controllers.home
 
-import org.scalajs.angularjs.AngularJsHelper._
-import org.scalajs.angularjs.{Service, injected}
+import io.scalajs.npm.angularjs.AngularJsHelper._
+import io.scalajs.npm.angularjs.{Service, injected}
 import com.socialized.javascript.models.{Post, Submitter, User}
 import com.socialized.javascript.services.UserService
-import org.scalajs.dom.browser.console
+import io.scalajs.dom.html.browser.console
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.scalajs.js

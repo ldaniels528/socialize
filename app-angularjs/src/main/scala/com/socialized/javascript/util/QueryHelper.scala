@@ -1,6 +1,6 @@
 package com.socialized.javascript.util
 
-import org.scalajs.dom.browser.encodeURI
+import io.scalajs.dom.html.browser.encodeURI
 
 /**
   * Query Helper

@@ -1,14 +1,14 @@
 package com.socialized.javascript.controllers.home
 
-import org.scalajs.angularjs.AngularJsHelper._
-import org.scalajs.angularjs.{Timeout, _}
-import org.scalajs.angularjs.toaster.Toaster
-import org.scalajs.nodejs.util.ScalaJsHelper._
+import io.scalajs.npm.angularjs.AngularJsHelper._
+import io.scalajs.npm.angularjs.{Timeout, _}
+import io.scalajs.npm.angularjs.toaster.Toaster
+import io.scalajs.util.ScalaJsHelper._
 import com.socialized.javascript.forms.ProfileEditForm
 import com.socialized.javascript.models.User
 import com.socialized.javascript.services.{MySessionService, UserService}
-import org.scalajs.dom
-import org.scalajs.dom.browser.console
+import io.scalajs.dom
+import io.scalajs.dom.html.browser.console
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js

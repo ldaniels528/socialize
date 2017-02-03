@@ -1,8 +1,8 @@
 package com.socialized.javascript.services
 
-import org.scalajs.angularjs.http.Http
-import org.scalajs.angularjs.{Service, injected}
-import org.scalajs.nodejs.util.ScalaJsHelper._
+import io.scalajs.npm.angularjs.http.Http
+import io.scalajs.npm.angularjs.{Service, injected}
+import io.scalajs.util.ScalaJsHelper._
 import com.socialized.javascript.models.{Notification, OperationResult, WsEventMessage}
 
 import scala.concurrent.ExecutionContext

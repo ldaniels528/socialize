@@ -1,7 +1,7 @@
 package com.socialized.javascript.routes
 
-import org.scalajs.nodejs.console
-import org.scalajs.sjs.OptionHelper._
+import io.scalajs.nodejs.console
+import io.scalajs.util.OptionHelper._
 
 import scala.language.implicitConversions
 import scala.scalajs.js
@@ -21,7 +21,8 @@ object SharedContentProcessor {
     */
   def parseMetaData(metadata: Map[String, String]): Option[SharedContent] = {
     // gather as much meta data as possible
-    val results = metadata.toSeq // extractTitle(doc) ++ extractMetaData(doc, keyName = "name") ++ extractMetaData(doc, keyName = "property")
+    val results = metadata.toSeq
+    // extractTitle(doc) ++ extractMetaData(doc, keyName = "name") ++ extractMetaData(doc, keyName = "property")
     val props = Map(results: _*)
     results.foreach { case (k, v) => console.log(s"meta: $k => $v") }
 
@@ -256,13 +257,13 @@ object SharedContentProcessor {
                            updatedTime: Option[js.Date] = None,
                            url: Option[String] = None) {
 
-    def completeness = {
+    def completeness: Double = {
       val values = Seq(author, description, locale, publishedTime, section, source, tags, thumbnailUrl, title, updatedTime, url)
       val count = values.foldLeft[Int](0) { (total, value) => total + value.map(_ => 1).getOrElse(0) }
       count / values.length.toDouble
     }
 
-    def toJson = {
+    def toJson: js.Dictionary[js.UndefOr[_]] = {
       js.Dictionary(
         "author" -> author.map(_.expandMarkup).orUndefined,
         "description" -> description.map(_.expandMarkup).orUndefined,

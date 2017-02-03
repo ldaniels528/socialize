@@ -1,7 +1,7 @@
 package com.socialized.javascript.routes
 
-import org.scalajs.nodejs.express.{Application, Request, Response}
-import org.scalajs.nodejs.mongodb._
+import io.scalajs.npm.express.{Application, Request, Response}
+import io.scalajs.npm.mongodb._
 import com.socialized.javascript.data.EventDAO
 import com.socialized.javascript.models.Event
 import com.socialized.javascript.data.EventDAO._
@@ -15,7 +15,7 @@ import scala.util.{Failure, Success}
   */
 object EventRoutes {
 
-  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext, mongo: MongoDB) = {
+  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext) = {
     implicit val eventDAO = dbFuture.flatMap(_.getEventDAO)
 
     app.get("/api/events/user/:ownerID", (request: Request, response: Response, next: NextFunction) => getEventsByOwner(request, response, next))
@@ -25,7 +25,7 @@ object EventRoutes {
   /**
     * Retrieve events by user/owner
     */
-  def getEventsByOwner(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, eventDAO: Future[EventDAO]) = {
+  def getEventsByOwner(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, eventDAO: Future[EventDAO]) = {
     val ownerID = request.params("ownerID")
     eventDAO.flatMap(_.find("owner._id" $eq ownerID.$oid).toArrayFuture[Event]) onComplete {
       case Success(events) => response.send(events); next()
@@ -36,7 +36,7 @@ object EventRoutes {
   /**
     * Retrieve upcoming events by user/owner
     */
-  def getUpcomingEvents(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, eventDAO: Future[EventDAO]) = {
+  def getUpcomingEvents(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, eventDAO: Future[EventDAO]) = {
     val ownerID = request.params("ownerID")
     eventDAO.flatMap(_.find("owner._id" $eq ownerID.$oid).toArrayFuture[Event]) onComplete {
       case Success(events) => response.send(events); next()

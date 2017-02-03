@@ -4,9 +4,9 @@ import com.socialized.javascript.data.GroupDAO
 import com.socialized.javascript.data.GroupDAO._
 import com.socialized.javascript.forms.MaxResultsForm
 import com.socialized.javascript.models.Group
-import org.scalajs.nodejs.express.{Application, Request, Response}
-import org.scalajs.nodejs.mongodb._
-import org.scalajs.sjs.JsUnderOrHelper._
+import io.scalajs.npm.express.{Application, Request, Response}
+import io.scalajs.npm.mongodb._
+import io.scalajs.util.JsUnderOrHelper._
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.language.postfixOps
@@ -19,7 +19,7 @@ import scala.util.{Failure, Success}
   */
 object GroupRoutes {
 
-  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext, mongo: MongoDB) = {
+  def init(app: Application, dbFuture: Future[Db])(implicit ec: ExecutionContext) = {
     implicit val groupDAO = dbFuture.flatMap(_.getGroupDAO)
 
     // Group CRUD
@@ -31,9 +31,9 @@ object GroupRoutes {
   /**
     * Retrieve a group by ID
     */
-  def getGroupByID(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, groupDAO: Future[GroupDAO]) = {
+  def getGroupByID(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, groupDAO: Future[GroupDAO]) = {
     val groupID = request.params("groupID")
-    groupDAO.flatMap(_.findOneFuture[Group]("_id" $eq groupID.$oid)) onComplete {
+    groupDAO.flatMap(_.findOneFuture[Group]("_id" $eq new ObjectID(groupID))) onComplete {
       case Success(Some(group)) => response.send(group); next()
       case Success(None) => response.notFound(); next()
       case Failure(e) => response.internalServerError(e); next()
@@ -43,7 +43,7 @@ object GroupRoutes {
   /**
     * Retrieve a group by entity (ID or name)
     */
-  def getGroupByEntity(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, groupDAO: Future[GroupDAO]) = {
+  def getGroupByEntity(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, groupDAO: Future[GroupDAO]) = {
     val form = request.queryAs[GroupForm]
     val query = (form.name.map("name" $eq _: js.Any) ?? form.id.map("_id" $eq _.$oid)).toOption
     groupDAO map { coll =>
@@ -66,7 +66,7 @@ object GroupRoutes {
   /**
     * Retrieve groups
     */
-  def getGroups(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, mongo: MongoDB, groupDAO: Future[GroupDAO]) = {
+  def getGroups(request: Request, response: Response, next: NextFunction)(implicit ec: ExecutionContext, groupDAO: Future[GroupDAO]) = {
     val maxResults = request.request.queryAs[MaxResultsForm].getMaxResults()
     groupDAO.flatMap(_.find().limit(maxResults).toArrayFuture[Group]) onComplete {
       case Success(groups) => response.send(groups); next()

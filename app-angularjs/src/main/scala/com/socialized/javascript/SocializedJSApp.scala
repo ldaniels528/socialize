@@ -4,11 +4,11 @@ import com.socialized.javascript.controllers._
 import com.socialized.javascript.controllers.home._
 import com.socialized.javascript.directives.{CareerTalkDirective, CompileDirective}
 import com.socialized.javascript.services._
-import org.scalajs.angularjs.Module.EnrichedModule
-import org.scalajs.angularjs.http.HttpProvider
-import org.scalajs.angularjs.uirouter.{RouteProvider, RouteTo}
-import org.scalajs.angularjs.{Scope, angular}
-import org.scalajs.dom.browser.console
+import io.scalajs.dom.html.browser.console
+import io.scalajs.npm.angularjs.Module.EnrichedModule
+import io.scalajs.npm.angularjs.http.HttpProvider
+import io.scalajs.npm.angularjs.uirouter.{RouteProvider, RouteTo}
+import io.scalajs.npm.angularjs.{Scope, angular}
 
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSExport
@@ -93,15 +93,15 @@ object SocializedJSApp extends js.JSApp {
 
       // configure the application routes
       $routeProvider
-        .when("/home", RouteTo(redirectTo = "/home/newsfeed"))
-        .when("/home/events", RouteTo(templateUrl = "/assets/views/home/index.html"))
-        .when("/home/messages", RouteTo(templateUrl = "/assets/views/home/index.html"))
-        .when("/home/newsfeed", RouteTo(templateUrl = "/assets/views/home/index.html"))
-        .when("/home/photos", RouteTo(templateUrl = "/assets/views/home/index.html"))
-        .when("/home/profile/edit", RouteTo(templateUrl = "/assets/views/home/index.html"))
-        .when("/home/profile/viewer/:id", RouteTo(templateUrl = "/assets/views/home/index.html"))
-        .when("/login", RouteTo(templateUrl = "/assets/views/login/index.html"))
-        .otherwise(RouteTo(redirectTo = "/home"))
+        .when("/home", new RouteTo(redirectTo = "/home/newsfeed"))
+        .when("/home/events", new RouteTo(templateUrl = "/assets/views/home/index.html"))
+        .when("/home/messages", new RouteTo(templateUrl = "/assets/views/home/index.html"))
+        .when("/home/newsfeed", new RouteTo(templateUrl = "/assets/views/home/index.html"))
+        .when("/home/photos", new RouteTo(templateUrl = "/assets/views/home/index.html"))
+        .when("/home/profile/edit", new RouteTo(templateUrl = "/assets/views/home/index.html"))
+        .when("/home/profile/viewer/:id", new RouteTo(templateUrl = "/assets/views/home/index.html"))
+        .when("/login", new RouteTo(templateUrl = "/assets/views/login/index.html"))
+        .otherwise(new RouteTo(redirectTo = "/home"))
       ()
     })
   }

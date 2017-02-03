@@ -1,7 +1,7 @@
 package com.socialized.javascript.data
 
-import org.scalajs.nodejs.mongodb.gridfs.{GridFSBucket, GridFSOptions}
-import org.scalajs.nodejs.mongodb.{Db, MongoDB}
+import io.scalajs.npm.mongodb.Db
+import io.scalajs.npm.mongodb.gridfs.{GridFSBucket, GridFSOptions}
 
 import scala.concurrent.ExecutionContext
 import scala.scalajs.js
@@ -25,8 +25,8 @@ object PostAttachmentDAO {
     */
   implicit class PostAttachmentDAOExtensions(val db: Db) extends AnyVal {
 
-    def getPostAttachmentDAO(implicit ec: ExecutionContext, mongo: MongoDB) = {
-      mongo.GridFSBucket(db, new GridFSOptions(bucketName = "post_attachments")).asInstanceOf[PostAttachmentDAO]
+    def getPostAttachmentDAO(implicit ec: ExecutionContext): PostAttachmentDAO = {
+      new GridFSBucket(db, new GridFSOptions(bucketName = "post_attachments")).asInstanceOf[PostAttachmentDAO]
     }
 
   }

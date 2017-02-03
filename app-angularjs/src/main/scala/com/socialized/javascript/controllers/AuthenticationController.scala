@@ -1,11 +1,11 @@
 package com.socialized.javascript.controllers
 
-import org.scalajs.angularjs.AngularJsHelper._
-import org.scalajs.angularjs.{Controller, Location, Scope, injected}
-import org.scalajs.nodejs.util.ScalaJsHelper._
 import com.socialized.javascript.forms.LoginForm
 import com.socialized.javascript.services.{AuthenticationService, MySessionService}
-import org.scalajs.dom.browser.console
+import io.scalajs.dom.html.browser.console
+import io.scalajs.npm.angularjs.AngularJsHelper._
+import io.scalajs.npm.angularjs.{Controller, Location, Scope, injected}
+import io.scalajs.util.ScalaJsHelper._
 
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 import scala.scalajs.js

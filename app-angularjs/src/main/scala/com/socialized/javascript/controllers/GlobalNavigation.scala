@@ -1,7 +1,7 @@
 package com.socialized.javascript.controllers
 
-import org.scalajs.angularjs.{Controller, Location, Scope}
-import org.scalajs.dom.browser.console
+import io.scalajs.npm.angularjs.{Controller, Location, Scope}
+import io.scalajs.dom.html.browser.console
 
 import scala.scalajs.js
 
